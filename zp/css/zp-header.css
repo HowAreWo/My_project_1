@@ -1,0 +1,458 @@
+*{
+    margin:0;
+    padding:0;
+}
+a{
+    text-decoration:none;
+    font-size:14px;
+}
+.clearfix:before, .clearfix:after{
+    content: " ";
+    display: table;
+}
+ul{
+    list-style:none;
+}
+.clearfix:after{
+    clear: both;
+}
+/*引入头部的样式！*/
+.my_head{
+    width:100%;
+    height:310px;
+}
+/*引入底部的样式！*/
+.my_foot{
+    width:100%;
+    height:430px;
+}
+/*iframe::before{*/
+    /*content: "";*/
+    /*clear: both;*/
+/*}*/
+
+
+/*头部*/
+.header{
+    width:100%;
+    height:40px;
+    background:#333;
+}
+/*第一行的样式*/
+.header_1{
+    width: 86%;
+    margin: 0 auto;
+    position: relative;
+}
+/*第一行左边的样式*/
+.diyihang_1 ul{
+    list-style:none;
+}
+.diyihang_1 ul li{
+    float:left;
+    line-height: 39px;
+    margin-right: 32px;
+}
+.diyihang_1 ul li a{
+    text-decoration:none;
+    font-size:14px;
+    color:#b0b0b0;
+}
+.diyihang_1 ul li a:hover{
+    color:#ff3600;
+}
+.diyihang_1 .zp_sjb{
+    background-image: url("../img/css-xuebi2.png");
+    background-repeat: no-repeat;
+    background-position: 0 14px;
+    position: relative;
+}
+.diyihang_1 .zp_sjb a{
+    margin-left:12px;
+}
+/*第一行那个下拉二维码的效果！*/
+.diyihang_1 .zp_sjb div{
+    position: absolute;
+    left:0;
+    top:40px;
+    display: none;
+    z-index: 2000;
+    text-align: center;
+    line-height:30px;
+}
+
+/*第一行右边的样式*/
+.cart-num{
+    background-image: url("../img/css-xuebi2.png");
+    background-repeat: no-repeat;
+    background-position:12px -24px;
+    float:right;
+    width:120px;
+    height:40px;
+    line-height:40px;
+    text-align: center;
+    background-color: #FF3600;
+    position:relative;
+}
+.cart-num a{
+    color: #fff;
+    font-weight:500;
+    font-size:16px;
+}
+/*购物车后面的圆点0*/
+.num{
+    padding:0 4px;
+    position:absolute;
+    left:89px;
+    top:13px;
+    background-color:#fff;
+    line-height:1.5;
+    border-radius:20px;
+    color:#ff3600;
+    font-size:12px;
+}
+.num{
+    display: none;
+}
+.num.headerCartNum{
+    display: inline-block;
+}
+/*此处有问题！！所以鼠标移入我多写了几个...*/
+.cart-num:hover {
+    background-image: url("../img/css-xuebi2.png");
+    background-repeat: no-repeat;
+    background-position: 12px -66px;
+ }
+.cart-num:hover{
+    background-color:#e0e0e0;
+}
+.cart-num:hover a{
+    color:#ff3600;
+}
+.cart-num:hover span{
+    background:#ff3600;
+    color:#fff;
+}
+/*  不知道这个下拉框 怎么处理
+
+.cart-num:hover .cart-list{
+    display:block;
+}
+
+.list_empty {
+    width: 320px;
+    background-color:#fff;
+    height: 70px;
+}
+
+.list_empty a {
+    display: block;
+    width: 290px;
+    height: 86px;
+    padding: 7px 15px;
+}
+img{
+    display:block;
+}
+*/
+/*第一行中间的样式*/
+.diyihang_3{
+    float:right;
+}
+.diyihang_3 ul{
+    list-style: none;
+    float:right;
+    width:660px;
+    height:40px;
+}
+.diyihang_3 ul li{
+    float:left;
+    line-height:40px;
+    text-align: center;
+    width:81px;
+}
+.dl_zc li a{
+    color:#b0b0b0;
+    font-size:14px;
+}
+/*电话背景图单独跟电话的  单独样式*/
+.dl_zc .icon-phone{
+    background-image:url("../img/css-xuebi2.png");
+    background-repeat:no-repeat;
+    background-position:0 -148px;
+    width:100px;
+    margin-left: 10px;
+    padding-left: 27px;
+    text-align: left;
+}
+/*鼠标移入效果*/
+.dl_zc li a:hover{
+    color:#ff3600;
+}
+/*第二行的样式*/
+.header_2 p{
+    height:100px;
+    width:100%;
+    clear: both;
+}
+/*第三行的样式*/
+.header_3{
+    height:100px;
+    width:100%;
+    background:#ffffff;
+}
+.header_3_1{
+    width:86%;
+    margin:0 auto;
+    position:relative;
+}
+.zp_cc{
+    position:relative;
+    padding:30px 0 12px 0;
+}
+.zp_cc a{
+    position:absolute;
+    top:22px;
+    width:190px;
+    max-height: 90px;
+    overflow: hidden;
+}
+.zp_cc a img{
+    display:block;
+}
+.float-left{
+    float:left;
+}
+/*搜索框*/
+.zp_input{
+    margin:0 95px 0 227px;
+    position: relative;
+    padding:30px 0 12px 0;
+}
+.search-text{
+    width:488px;
+    height:36px;
+    text-indent: 12px;
+    border:1px solid #e0e0e0;
+    padding-top:1px;
+}
+input::-webkit-input-placeholder {
+    color: #b2b2b2;
+    font-size: 12px;
+}
+.search-btn{
+   display: inline-block;
+    width:55px;
+    height:36px;
+    position: absolute;
+    left:433px;
+    top:31px;
+    line-height: 36px;
+    text-align: center;
+    border-left: 1px solid #e0e0e0;
+    background-color: #fff;
+    background-image: url("../img/icon-search.png");
+    background-repeat:no-repeat ;
+    background-position: center center;
+    cursor:pointer;
+}
+.search-btn:hover{
+    background-color:#ff3600 ;
+    border-color:#ff3600;
+    background-image: url("../img/icon-s.png");
+}
+/*我要移到搜索图标 去改变input框的border  因为没有联系  实现不了
+.search-btn:hover .zp_input .search-text{
+    border:1px solid #ff3600;
+}
+*/
+.input_bottom{
+    position: absolute;
+    top:75px;
+}
+.input_bottom a{
+    font-size: 12px;
+    margin-left:20px;
+    float: left;
+    color:#999;
+}
+.input_bottom a.first_hot {
+    color: #ff3600;
+    margin-left: 0;
+}
+.input_bottom a.first_hot:hover{
+    color:#c00000;
+}
+.input_bottom a:hover{
+    color:#ff3600;
+}
+
+/*input框后面的三个li*/
+.zp_input_1{
+    position:relative;
+    padding:30px 0 12px 0;
+}
+.zp_input_1 ul{
+    list-style: none;
+}
+.zp_input_1 ul li {
+    float: left;
+    height: 28px;
+    margin-left: 16px;
+}
+.zp_input_1 ul li p {
+    width: 53px;
+    font-size: 12px;
+    color: #b2b2b2;
+    margin-left: 32px;
+}
+
+.zp_input_1 ul li:nth-child(1){
+    background-image: url("../img/icon-1.png");
+    background-repeat: no-repeat;
+}
+.zp_input_1 ul li:nth-child(2){
+    background-image: url("../img/icon-2.png");
+    background-repeat: no-repeat;
+}
+.zp_input_1 ul li:nth-child(3){
+    background-image: url("../img/icon-3.png");
+    background-repeat: no-repeat;
+}
+
+/*手机登陆购买二维码*/
+.zp_input_2{
+    height: 79px;
+    margin:20px 0 0 30px;
+}
+.zp_input_2 img{
+    width:60px;
+    display: block;
+    border:0;
+}
+.zp_input_2 span{
+    font-size: 12px;
+    color:#b2b2b2;
+    margin-left:-6px;
+}
+
+
+/*全部商品分类*/
+.header-sel{
+    height:60px;
+    width:100%;
+}
+.zp_fenlei{
+    width:1226px;
+    margin:0 auto;
+    position:relative;
+}
+.left-list{
+    width:234px;
+    margin-right:12px;
+}
+.left-listone{
+    display: block;
+    line-height: 60px;
+    color:#333;
+    font-size:16px;
+    padding-left:28px;
+    background-image: url("../img/icon-list.png");
+    background-repeat:no-repeat;
+    background-position: 0 center;
+    cursor: pointer;
+}
+
+.one-tea{
+    padding: 24px 20px 14px;
+    width:194px;
+    height:36px;
+    background:rgba(48,56,53,0.99);
+}
+.one-tea span{
+    float:left;
+    width:62px;
+    height:20px;
+    line-height: 20px;
+    font-size:12px;
+    text-align: center;
+    margin-top:4px;
+    color:#fff;
+    background-image:url("../img/one-tea.png");
+    background-repeat: no-repeat;
+    background-position: 0 center;
+}
+.one-tea-1{
+    width:130px;
+}
+.one-tea-1 a{
+    float: left;
+    color:#b0b0b0;
+    font-size:12px;
+    margin-left: 5px;
+    width:60px;
+    line-height: 1.5;
+}
+.one-tea-1 a:hover{
+    color:#ff3600;
+}
+
+/*下面的分类*/
+.list-info{
+    display: block;
+    position: absolute;
+    left:0;
+    top:134px;
+    height:364px;
+    background-color: rgb(53, 62, 59);
+    padding-top:22px;
+    border:0;
+    z-index: 1000;
+}
+.list-info dl{
+    padding:0 20px 20px;
+    width:194px;
+    height:32px;
+}
+.big-title a{
+    color:#fff;
+    width:50px;
+    font-size:16px;
+    height:30px;
+    text-align: justify;
+    display: inline-block;
+    text-align-last: justify;
+}
+.list-info dd {
+    margin-left: 7px;
+    width: 130px;
+}
+.list-info dd ul li {
+    float:left;
+    margin-left: 7px;
+    line-height: 16px;
+    height: 16px;
+    width:60px;
+}
+.list-info dd ul li a {
+    display: block;
+    font-size:12px;
+    color:#b0b0b0;
+}
+
+/*ul*/
+.zp-pingpai{
+    float:left;
+}
+.zp-pingpai li{
+    float: left;
+    line-height: 60px;
+    margin-right: 50px;
+}
+.zp-pingpai li a {
+    color: #333;
+    font-size: 14px;
+}
+.zp-pingpai li a:hover{
+    color:#ff3600;
+}

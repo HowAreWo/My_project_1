@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+		<style>
+
+		   /*头部样式*/
+		   *{
+			   margin:0;
+			   padding:0;
+		   }
+		   .header{
+			  width:100%;
+			  height:100px;
+		   }
+			.login-a{
+			  width:86%;
+			  height:100px;
+			  margin:0 auto;
+		   }
+		   .header img{
+			  margin-top:34px;
+		   }
+		   /*中部样式*/
+		   *{
+			   margin:0;
+			   padding:0;
+		   }
+		   .bodyer{
+			   height:585px;
+			   background:#F8EFDD;
+			   display:flex;
+		   }
+		   .left-img{
+			   margin-left:100px;
+		   }
+		   .right-login {
+			   width:380px;
+			   height:524px;
+			   background:white;
+			   margin-top:30px;
+			   margin-left:20px;
+
+		   }
+		   .right-login ul{
+			  list-style:none;
+		   }
+		   .zhanghao{
+			  margin:30px 20px 10px;
+			  font-size:18px;
+		   }
+		   .zhanghao span{
+			  margin-left:45px;
+			  margin-right:5px;
+			  color:#FF3600;
+			  cursor: pointer;
+		   }
+		   .zhanghao span+span{
+			  padding-left:45px;
+			  border-left:1px solid #E0E0E0;
+			  color:#000;
+		   }
+		   #one,#two{
+			  width:318px;
+			  height:44px;
+			  font-size:10px;
+			  padding:5px 13px;
+			  box-sizing:border-box;
+			  border:1px solid #CBCBCB;
+			  margin:18px 33px 0;
+		   }
+		   #three{
+			  width:318px;
+			  height:44px;
+			  color:#FFFFFF;
+			  background-color:#dddddd;
+			  border:none;
+			  outline:none;
+			  margin:25px 33px 0;
+			  cursor: pointer;
+		   }
+		   #three.btn{
+            background: #ff3600;
+            color:#fff;
+        	}
+
+		   #zhuce {
+			  margin:25px 105px 10px;
+			  font-size:14px;
+			  color:#999999;
+		   }
+		   #zhuce a{
+			   text-decoration:none;
+			   color:#999999;
+		   }
+		   #zhuce a:hover{
+			text-decoration:none;
+			color:#ff3600;
+		}
+		   .biaoji{
+			  margin-top:120px;
+			  margin-left:38px;
+		   }
+		   .qita{
+			  font-size:13px;
+			  color:#BBBBBB;
+		   }
+		   .xian{
+			  color:#E0E0E0;
+		   }
+		   .zhifu{
+			  margin:13px 65px;
+		   }
+		   .zhifu img{
+			  margin-left:37px;
+		   }
+			.my_foot{
+				width:100%;
+				height:28rem;
+			}
+		</style>
+	 </head>
+	 <body>
+		<div class="header">
+		   <div class="login-a">
+			 <a href="index.html"><img src="img/login.png" alt=""></a>
+		   </div>
+		</div>
+		<div class="bodyer">
+			<div></div>
+		    <div class="left-img">
+			  <a href="#"><img src="img/left_3.jpg" alt=""></a>
+		   </div>
+		    <div class="right-login">
+			   <ul>
+				<li class="zhanghao">
+				 <span>账号登录</span>
+				 <span>短信登录</span>
+				</li>
+				<li><input type="text" placeholder="用户名" id="one"></li>
+				<li><input type="password"  placeholder="密码" id="two"></li>
+				<li><input type="button"  value="立即登录" id="three"></li>
+				<li id="zhuce">
+					<a href="zp-register.html">
+						<span>注册醉品账号</span>
+					</a>
+				<b>|</b>
+				<span>忘记密码？</span>
+				</li>
+				<li class="biaoji">
+				<span class="xian">——————</span>
+				<span class="qita">其他方式登录</span>
+				<span class="xian">——————</span>
+				</li>
+				<li class="zhifu">
+				  <a href="#"><img src="img/zfb.png" alt=""></a>
+				  <a href="#"><img src="img/qq.png" alt=""></a>
+				  <a href="#"><img src="img/wx.png" alt=""></a>
+				</li>
+			   </ul>
+		   </div>
+		</div>
+		
+		<div id=foot></div>
+		<script src="js/jquery-3.2.1.js"></script>
+		<script src="js/login.js"></script>
+    	<script src="js/footer.js"></script>
+	 </body>
+	</html>

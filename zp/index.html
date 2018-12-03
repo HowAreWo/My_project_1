@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Generator" content="EditPlus®">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <title>zhuye</title>
+    <link rel="stylesheet" href="css/zp-zy.css">
+</head>
+<body>
+<!--js 文件引入不成功！！！草拟吗  搞了老子几十分钟！！！
+    <script src="js.js"></script>             -->
+    <!--头部-->
+    <div class="header">
+        <!--第一行-->
+        <div class="header_1">
+            <!--左边-->
+            <div class="diyihang_1">
+                <ul>
+                    <li><a href="index.html">醉品茶城首页</a></li>
+                    <li><a href="#">OMO体验店加盟</a></li>
+                    <li class="zp_sjb" id="li1">
+                        <a href="#">醉品茶城手机版</a>
+                        <div class="zp-pic" id="div1">
+                            <img src="img/erweima.jpg" alt="">
+                            手机登录购买
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!--右边-->
+            <div class="diyihang_2">
+                <dl>
+                    <dt class="cart-num">
+                        <a href="zp-login.html">购物车</a>
+                        <!--登陆之后会显示这个购物车后面的0   不登陆不会显示  样式写好了！-->
+                        <span class="num ">0</span>
+                    </dt>
+                    <!--下拉框？？？！！！-->
+                    <!--<dt class="cart-list" style="display:none;height:0;">
+                        <div class="list_empty">
+                            <a href="/">
+                                <img src="img/cart_03.png" alt="">
+                            </a>
+                        </div>
+                    </dt>-->
+                </dl>
+            </div>
+            <!--中间-->
+            <div class="diyihang_3">
+                <ul class="dl_zc">
+                    <li class="login_f active"><a href="zp-login.html">登陆</a>        <a href="zp-register.html">注册</a></li>
+
+                    <li class="login_t" style="width:200px;"><a>欢迎：东东</a>        <a href="#" class="signout">注销</a></li>
+                    
+
+
+
+                    <li><a href="#">我的订单</a></li>
+                    <li><a href="#">帮助中心</a></li>
+                    <li><a href="#">关于醉品</a></li>
+                    <li class="icon-phone"><a href="#">4006-066-068</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+        <!--第二行-->
+        <div class="header_2">
+            <a href="#" target="_blank">
+                <p style="position: relative;
+                    background: url(img/top_hf1.gif) no-repeat center center">
+                </p>
+            </a>
+        </div>
+        <!--第三行-->
+        <div class="header_3">
+            <div class="header_3_1 clearfix">
+                <!--醉品logo-->
+                <div class="zp_cc float-left">
+                    <a href="#" ><!--style="top:6px;"-->
+                        <img src="img/login1.png" alt="">
+                    </a>
+                </div>
+                <!--input 搜索框-->
+                <div class="zp_input float-left">
+                    <input type="text" name="keyword" placeholder="请输入关键词" class="search-text">
+                    <span class="search-btn"></span>
+                    <div class="input_bottom">
+                        <a href="#" target="_blank" class="first_hot">白茶</a>
+                        <a href="#" target="_blank">广东单枞</a>
+                        <a href="#" target="_blank">龙井</a>
+                        <a href="#" target="_blank">金骏眉</a>
+                        <a href="#" target="_blank">普洱</a>
+                    </div>
+                </div>
+                <!--全场商品...-->
+                <div class="zp_input_1 float-left">
+                    <ul>
+                        <li>
+                            <p>全场商品90天保价</p>
+                        </li>
+                        <li>
+                            <p>满59元免邮费</p>
+                        </li>
+                        <li>
+                            <p>2000城市货到付款</p>
+                        </li>
+                    </ul>
+                </div>
+                <!--二维码-->
+                <div class="zp_input_2 float-left">
+                    <img src="img/erweima.jpg" alt="">
+                    <span>手机登陆购买</span>
+                </div>
+            </div>
+        </div>
+
+
+    <!--全部商品分类-->
+    <div class="header-sel">
+        <div class="zp_fenlei">
+            <dl class="left-list float-left">
+                <dt class="left-listone">全部商品分类</dt>
+
+                <dd class="one-tea">
+                    <span>一键选茶</span>
+                <!--后面的四个选项a标签-->
+                    <div class="one-tea-1 float-left">
+                        <a href="#" target="_blank">自饮助手</a>
+                        <a href="#" target="_blank">自饮锦囊</a>
+                        <a href="#" target="_blank">送礼助手</a>
+                        <a href="#" target="_blank">送礼锦囊</a>
+                    </div>
+                </dd>
+                <!--下面的分类-->
+                <dd class="list-info">
+                    <dl class="clearfix">
+                        <dt class="big-title float-left">
+                            <a href="#">乌龙茶</a>
+                        </dt>
+                        <dd class="float-left">
+                            <ul class="clearfix">
+                                <li><a href="#">安溪铁观音</a></li>
+                                <li style="width:50px;"><a href="#">武夷岩茶</a></li>
+                                <li><a href="#">广东单枞</a></li>
+                                <li style="width:50px;"><a href="#">漳平水仙</a></li>
+                            </ul>
+                        </dd>
+                        <!--左下拉框-->
+
+                    </dl>
+                    <dl class="clearfix">
+                        <dt class="big-title float-left">
+                            <a href="#">红茶</a>
+                        </dt>
+                        <dd class="float-left">
+                            <ul class="clearfix">
+                                <li><a href="#">金骏眉</a></li>
+                                <li style="width:50px;"><a href="#">正山小种</a></li>
+                                <li><a href="#">祁门红茶</a></li>
+                                <li style="width:50px;"><a href="#">云南滇红</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearfix">
+                        <dt class="big-title float-left">
+                            <a href="#">绿茶</a>
+                        </dt>
+                        <dd class="float-left">
+                            <ul class="clearfix">
+                                <li><a href="#">龙井</a></li>
+                                <li style="width:50px;"><a href="#">四川绿茶</a></li>
+                                <li><a href="#">信阳毛尖</a></li>
+                                <li style="width:50px;"><a href="#">绿螺春</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearfix">
+                        <dt class="big-title float-left">
+                            <a href="#">黑茶</a>
+                        </dt>
+                        <dd class="float-left">
+                            <ul class="clearfix">
+                                <li><a href="#">普洱茶</a></li>
+                                <li style="width:50px;"><a href="#">安化黑茶</a></li>
+                                <li><a href="#">柑普茶</a></li>
+                                <li style="width:50px;"><a href="#">六堡茶</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearfix">
+                        <dt class="big-title float-left">
+                            <a href="#">白茶</a>
+                        </dt>
+                        <dd class="float-left">
+                            <ul class="clearfix">
+                                <li><a href="#">福鼎白茶</a></li>
+                                <li style="width:50px;"><a href="#">其他白茶</a></li>
+                                <li><a href="#"></a></li>
+                                <li style="width:50px;"><a href="#"></a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+
+                    
+                    <dl class="clearfix">
+                        <dt class="big-title float-left">
+                            <a href="#">花茶</a>
+                        </dt>
+                        <dd class="float-left">
+                            <ul class="clearfix">
+                                <li><a href="#">茉莉花茶</a></li>
+                                <li style="width:50px;"><a href="#">玫瑰花茶</a></li>
+                                <li><a href="#">菊花茶</a></li>
+                                <li style="width:50px;"><a href="#">其他花茶</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearfix">
+                        <dt class="big-title float-left">
+                            <a href="#">茶器</a>
+                        </dt>
+                        <dd class="float-left">
+                            <ul class="clearfix">
+                                <li><a href="#">陶瓷茶具</a></li>
+                                <li style="width:50px;"><a href="#">紫砂茶具</a></li>
+                                <li><a href="#">玻璃茶具</a></li>
+                                <li style="width:50px;"><a href="#">茶盘</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </dd>
+            </dl>
+            <ul class="zp-pingpai">
+                <li><a href="#" target="_blank">品牌集成馆</a></li>
+                <li><a href="#" target="_blank">大师名匠馆</a></li>
+                <li><a href="#" target="_blank">线下OMO体验店</a></li>
+                <li><a href="#" target="_blank">积分商城</a></li>
+            </ul>
+        </div>
+    </div>
+    <!--轮播图-->
+    <div class="lunbo_d">
+        <div id="flash">
+            <img src="img/lb-icon1.jpg" style="display:block" data-color="#2F190C">
+            <img src="img/lb-icon2.jpg" data-color="#f9fbf9">
+            <img src="img/lb-icon3.jpg" data-color="#fafaf9">
+            <img src="img/lb-icon4.jpg" data-color="#fffff1">
+            <img src="img/lb-icon6.jpg" data-color="#F4EBCE">
+            <ul>
+                <li style="background-color: #A10000"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+        <script src="js/lunbo.js"></script>
+    </div>
+
+
+
+    <!--轮播图下面的-->
+    <div class="lunb_bottom">
+        <div>
+            <a href="#"><img src="img/lbb-icon1.jpg" alt=""></a>
+            <a href="#"><img src="img/lbb-icon2.jpg" alt=""></a>
+            <a href="#"><img src="img/lbb-icon3.jpg" alt=""></a>
+            <a href="#"><img src="img/lbb-icon4.jpg" alt=""></a>
+        </div>
+    </div>
+
+    <!--限时特价-->
+    <div class="zp-xianshi">
+        <div class="zp-xstj">
+            <div class="zp-djs clearfix">
+                <div class="zp-djs-logo">
+                    <img src="img/zp-xstj.png" alt="限时特价">
+                </div>
+                <h2 class="zp-djs-h2">限时<span>特价</span></h2>
+                <div class="zp-djs-div"></div>
+                <p class="special-text">总有你想不到的低价</p>
+                <div class="clearfix zp-djs-sj countdown" data-endtime="2018-12-07 00:00:00" value="2018-11-06 00:00:00">
+                    <span class="tip-text text">距结束:</span>
+                    <span class="days">10</span>
+                    <span class="time-date hours">04</span>
+                    <span class="time-code">:</span>
+                    <span class="time-date minutes">50</span>
+                    <span class="time-code">:</span>
+                    <span class="time-date seconds">20</span>
+                </div>
+            </div>
+            <div class="zp-xlb">
+                <div class="zp-xlb-d1">
+                    <ul class="clearfix">
+                        <li class="clone" >
+                            <a href="#" target="_blank" class="special-good  ">
+                                <div class="special-img">
+                                    <img src="img/zp-zy-icon1.jpg">
+                                </div>
+                                <p class="special-descr" title="醉品朴茶·本朴 2018年金骏眉 经典口粮茶 特级 JM1580-250（125g*2盒）">
+                                        哈麻皮
+                                </p>
+                                <p class="special-alt" title="热销5年的明星茶礼">
+                                        哈麻皮</p>
+                                <p class="special-price">
+                                    <span class="special-now-price">￥324.00</span>
+                                    <del class="special-old-price">￥810.00</del>
+                                </p>
+                                <div class="tag-img">
+                                    <img src="img/zp-xstj1.png" alt="限时特价">
+                                </div>
+                            </a>
+                        </li>
+                        <li class="clone" >
+                            <a href="#" target="_blank" class="special-good  ">
+                                <div class="special-img">
+                                    <img src="img/zp-zy-icon1.jpg">
+                                </div>
+                                <p class="special-descr" title="醉品朴茶·本朴 2018年金骏眉 经典口粮茶 特级 JM1580-250（125g*2盒）">
+                                        醉品朴茶
+                                </p>
+                                <p class="special-alt" title="热销5年的明星茶礼">
+                                        热销5年的</p>
+                                <p class="special-price">
+                                    <span class="special-now-price">￥342.00</span>
+                                    <del class="special-old-price">￥810.00</del>
+                                </p>
+                                <div class="tag-img">
+                                    <img src="img/zp-xstj1.png" alt="限时特价">
+                                </div>
+                            </a>
+                        </li>
+                        <li class="clone" >
+                            <a href="#" target="_blank" class="special-good  ">
+                                <div class="special-img">
+                                    <img src="img/zp-zy-icon1.jpg">
+                                </div>
+                                <p class="special-descr" title="醉品朴茶·本朴 2018年金骏眉 经典口粮茶 特级 JM1580-250（125g*2盒）">
+                                       ·本朴
+                                </p>
+                                <p class="special-alt" title="热销5年的明星茶礼">
+                                        明星茶礼</p>
+                                <p class="special-price">
+                                        <span class="special-now-price">￥342.00</span>
+                                        <del class="special-old-price">￥810.00</del>
+                                </p>
+                                <div class="tag-img">
+                                    <img src="img/zp-xstj1.png" alt="限时特价">
+                                </div>
+                            </a>
+                        </li>
+                        <li class="clone" >
+                            <a href="#" target="_blank" class="special-good  ">
+                                <div class="special-img">
+                                    <img src="img/zp-zy-icon1.jpg">
+                                </div>
+                                <p class="special-descr" title="醉品朴茶·本朴 2018年金骏眉 经典口粮茶 特级 JM1580-250（125g*2盒）">
+                                        2018年金骏眉
+                                </p>
+                                <p class="special-alt" title="热销5年的明星茶礼">
+                                        茶礼</p>
+                                <p class="special-price">
+                                        <span class="special-now-price">￥342.00</span>
+                                        <del class="special-old-price">￥810.00</del>
+                                </p>
+                                <div class="tag-img">
+                                    <img src="img/zp-xstj1.png" alt="限时特价">
+                                </div>
+                            </a>
+                        </li>
+                        <li class="clone" >
+                            <a href="#" target="_blank" class="special-good  ">
+                                <div class="special-img">
+                                    <img src="img/zp-zy-icon1.jpg">
+                                </div>
+                                <p class="special-descr" title="醉品朴茶·本朴 2018年金骏眉 经典口粮茶 特级 JM1580-250（125g*2盒）">
+                                         经典口粮茶 
+                                </p>
+                                <p class="special-alt" title="热销5年的明星茶礼">
+                                        5年</p>
+                                <p class="special-price">
+                                        <span class="special-now-price">￥342.00</span>
+                                        <del class="special-old-price">￥810.00</del>
+                                </p>
+                                <div class="tag-img">
+                                    <img src="img/zp-xstj1.png" alt="限时特价">
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" target="_blank" class="special-good  ">
+                                <div class="special-img">
+                                    <img src="img/zp-zy-icon1.jpg">
+                                </div>
+                                <p class="special-descr" title="醉品朴茶·本朴 2018年金骏眉 经典口粮茶 特级 JM1580-250（125g*2盒）">
+                                        醉品朴茶·本朴 2018年金骏眉 经典口粮茶 特级 JM1580-250（125g*2盒）
+                                </p>
+                                <p class="special-alt" title="热销5年的明星茶礼">
+                                        热销5年的明星茶礼</p>
+                                <p class="special-price">
+                                        <span class="special-now-price">￥342.00</span>
+                                        <del class="special-old-price">￥810.00</del>
+                                </p>
+                                <div class="tag-img">
+                                    <img src="img/zp-xstj1.png" alt="限时特价">
+                                </div>
+                            </a>
+                        </li>
+                        <li >
+                            <a href="#" target="_blank" class="special-good  ">
+                                <div class="special-img">
+                                    <img src="img/zp-zy-icon1.jpg">
+                                </div>
+                                <p class="special-descr" title="醉品朴茶·本朴 2018年金骏眉 经典口粮茶 特级 JM1580-250（125g*2盒）">
+                                        醉品朴茶·本朴 2018年金骏眉 经典口粮茶 特级 JM1580-250（125g*2盒）
+                                </p>
+                                <p class="special-alt" title="热销5年的明星茶礼">
+                                        热销5年的明星茶礼</p>
+                                <p class="special-price">
+                                    <span class="special-now-price">￥324.00</span>
+                                    <del class="special-old-price">￥810.00</del>
+                                </p>
+                                <div class="tag-img">
+                                    <img src="img/zp-xstj1.png" alt="限时特价">
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" target="_blank" class="special-good  ">
+                                <div class="special-img">
+                                    <img src="img/zp-zy-icon1.jpg">
+                                </div>
+                                <p class="special-descr" title="醉品朴茶·本朴 2018年金骏眉 经典口粮茶 特级 JM1580-250（125g*2盒）">
+                                        醉品朴茶·本朴 2018年金骏眉 经典口粮茶 特级 JM1580-250（125g*2盒）
+                                </p>
+                                <p class="special-alt" title="热销5年的明星茶礼">
+                                        热销5年的明星茶礼</p>
+                                <p class="special-price">
+                                    <span class="special-now-price">￥342.00</span>
+                                    <del class="special-old-price">￥810.00</del>
+                                </p>
+                                <div class="tag-img">
+                                    <img src="img/zp-xstj1.png" alt="限时特价">
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" target="_blank" class="special-good  ">
+                                <div class="special-img">
+                                    <img src="img/zp-zy-icon1.jpg">
+                                </div>
+                                <p class="special-descr" title="醉品朴茶·本朴 2018年金骏眉 经典口粮茶 特级 JM1580-250（125g*2盒）">
+                                        醉品朴茶·本朴 2018年金骏眉 经典口粮茶 特级 JM1580-250（125g*2盒）
+                                </p>
+                                <p class="special-alt" title="热销5年的明星茶礼">
+                                        热销5年的明星茶礼</p>
+                                <p class="special-price">
+                                        <span class="special-now-price">￥342.00</span>
+                                        <del class="special-old-price">￥810.00</del>
+                                </p>
+                                <div class="tag-img">
+                                    <img src="img/zp-xstj1.png" alt="限时特价">
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" target="_blank" class="special-good  ">
+                                <div class="special-img">
+                                    <img src="img/zp-zy-icon1.jpg">
+                                </div>
+                                <p class="special-descr" title="醉品朴茶·本朴 2018年金骏眉 经典口粮茶 特级 JM1580-250（125g*2盒）">
+                                        醉品朴茶·本朴 2018年金骏眉 经典口粮茶 特级 JM1580-250（125g*2盒）
+                                </p>
+                                <p class="special-alt" title="热销5年的明星茶礼">
+                                        热销5年的明星茶礼</p>
+                                <p class="special-price">
+                                        <span class="special-now-price">￥342.00</span>
+                                        <del class="special-old-price">￥810.00</del>
+                                </p>
+                                <div class="tag-img">
+                                    <img src="img/zp-xstj1.png" alt="限时特价">
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" target="_blank" class="special-good  ">
+                                <div class="special-img">
+                                    <img src="img/zp-zy-icon1.jpg">
+                                </div>
+                                <p class="special-descr" title="醉品朴茶·本朴 2018年金骏眉 经典口粮茶 特级 JM1580-250（125g*2盒）">
+                                        醉品朴茶·本朴 2018年金骏眉 经典口粮茶 特级 JM1580-250（125g*2盒）
+                                </p>
+                                <p class="special-alt" title="热销5年的明星茶礼">
+                                        热销5年的明星茶礼</p>
+                                <p class="special-price">
+                                        <span class="special-now-price">￥342.00</span>
+                                        <del class="special-old-price">￥810.00</del>
+                                </p>
+                                <div class="tag-img">
+                                    <img src="img/zp-xstj1.png" alt="限时特价">
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" target="_blank" class="special-good  ">
+                                <div class="special-img">
+                                    <img src="img/zp-zy-icon1.jpg">
+                                </div>
+                                <p class="special-descr" title="醉品朴茶·本朴 2018年金骏眉 经典口粮茶 特级 JM1580-250（125g*2盒）">
+                                        醉品朴茶·本朴 2018年金骏眉 经典口粮茶 特级 JM1580-250（125g*2盒）
+                                </p>
+                                <p class="special-alt" title="热销5年的明星茶礼">
+                                        热销5年的明星茶礼</p>
+                                <p class="special-price">
+                                        <span class="special-now-price">￥342.00</span>
+                                        <del class="special-old-price">￥810.00</del>
+                                </p>
+                                <div class="tag-img">
+                                    <img src="img/zp-xstj1.png" alt="限时特价">
+                                </div>
+                            </a>
+                        </li>
+                        <li class="clone" >
+                            <a href="#" target="_blank" class="special-good  ">
+                                <div class="special-img">
+                                    <img src="img/zp-zy-icon1.jpg">
+                                </div>
+                                <p class="special-descr" title="醉品朴茶·本朴 2018年金骏眉 经典口粮茶 特级 JM1580-250（125g*2盒）">
+                                       ·本朴
+                                </p>
+                                <p class="special-alt" title="热销5年的明星茶礼">
+                                        明星茶礼</p>
+                                <p class="special-price">
+                                        <span class="special-now-price">￥342.00</span>
+                                        <del class="special-old-price">￥810.00</del>
+                                </p>
+                                <div class="tag-img">
+                                    <img src="img/zp-xstj1.png" alt="限时特价">
+                                </div>
+                            </a>
+                        </li>
+                        <li class="clone" >
+                            <a href="#" target="_blank" class="special-good  ">
+                                <div class="special-img">
+                                    <img src="img/zp-zy-icon1.jpg">
+                                </div>
+                                <p class="special-descr" title="醉品朴茶·本朴 2018年金骏眉 经典口粮茶 特级 JM1580-250（125g*2盒）">
+                                        2018年金骏眉
+                                </p>
+                                <p class="special-alt" title="热销5年的明星茶礼">
+                                        茶礼</p>
+                                <p class="special-price">
+                                        <span class="special-now-price">￥342.00</span>
+                                        <del class="special-old-price">￥810.00</del>
+                                </p>
+                                <div class="tag-img">
+                                    <img src="img/zp-xstj1.png" alt="限时特价">
+                                </div>
+                            </a>
+                        </li>
+                        <li class="clone" >
+                            <a href="#" target="_blank" class="special-good  ">
+                                <div class="special-img">
+                                    <img src="img/zp-zy-icon1.jpg">
+                                </div>
+                                <p class="special-descr" title="醉品朴茶·本朴 2018年金骏眉 经典口粮茶 特级 JM1580-250（125g*2盒）">
+                                         经典口粮茶 
+                                </p>
+                                <p class="special-alt" title="热销5年的明星茶礼">
+                                        5年</p>
+                                <p class="special-price">
+                                        <span class="special-now-price">￥342.00</span>
+                                        <del class="special-old-price">￥810.00</del>
+                                </p>
+                                <div class="tag-img">
+                                    <img src="img/zp-xstj1.png" alt="限时特价">
+                                </div>
+                            </a>
+                        </li>
+                    </ul> 
+                </div>
+                <!--<div class="xlb-btn">
+                    <a class="prev sPrev"></a>
+                    <a class="next sNext"></a>
+                </div>-->
+                <script src="js/xlb.js"></script>
+            </div>
+        </div>
+    </div>
+
+
+    <!--自饮-->
+    <div class="zp-drink">
+        <div class="zp-wrapper">
+            <div>自饮</div>
+            <div class="zp-zyhc clearfix">
+                <div class="zp-zyhc-left float-left">
+                    <a href="#">
+                        <img src="img/zp-zyhc.jpg" alt=""></a>
+                    <a href="#" class="zp-aaa">
+                        <h2>自饮助手</h2>
+                        <p>自己喝的茶</p>
+                        <p>包装不用太复杂</p>
+                        <img src="img/zp-right.png" alt="">
+                    </a>
+                </div>
+                <div class="zp-zyhc-center float-left d1">
+                    <a href="zp-xqy.html?pid=1" target="_blank">
+                        <div>
+                            <img src="img/zp-zy-icon1.jpg" alt="">
+                        </div>
+                        <p title="醉品朴茶·本朴 2018年 正山小种 经典口粮茶 特级 XZ1390-125g">醉品朴茶·本朴 2018年 正山小种 经典口粮茶 特级 XZ1390-125g</p>
+                        <p title="老客户口碑款">老客户口碑款</p>
+                        <p>￥119.00</p>
+                    </a>
+                    <a href="#" target="_blank">
+                        <div>
+                            <img src="img/zp-zy-icon3.jpg" alt="">
+                        </div>
+                        <p title="醉品朴茶联合曦瓜出品 2018年武夷大红袍 超值大桶装 花香型中火250g">醉品朴茶联合曦瓜出品 2018年武夷大红袍 超值大桶装 花香型中火250g</p>
+                        <p title="花香持久耐闻，茶水生津有活力">花香持久耐闻，茶水生津有活力</p>
+                        <p>￥198.00</p>
+                    </a>
+                    <a href="#" target="_blank">
+                        <div>
+                            <img src="img/zp-zy-icon4.jpg" alt="">
+                        </div>
+                        <p title="醉品朴茶 2018年云南滇红 高颜值女神茶 自饮系列 金针 特级 100g">醉品朴茶 2018年云南滇红 高颜值女神茶 自饮系列 金针 特级 100g</p>
+                        <p title="来自于滇红的核心产区 甘甜爽口">来自于滇红的核心产区 甘甜爽口</p>
+                        <p>￥138.00</p>
+                    </a>
+                    <a href="#" target="_blank">
+                        <div>
+                            <img src="img/zp-zy-icon5.jpg" alt="">
+                        </div>
+                        <p title="益泡柑 代用茶 柑普茶 荣华新会小青柑 150g 黄罐">益泡柑 代用茶 柑普茶 荣华新会小青柑 150g 黄罐</p>
+                        <p title="办公常饮，呵护肠胃">办公常饮，呵护肠胃</p>
+                        <p>￥180.00</p>
+                    </a>
+                    <a href="#" target="_blank">
+                        <div>
+                            <img src="img/zp-zy-icon6.jpg" alt="">
+                        </div>
+                        <p title="天池 凤凰单丛  乌龙茶 唐·水仙 一级 125g 单罐">天池 凤凰单丛  乌龙茶 唐·水仙 一级 125g 单罐</p>
+                        <p title="限量版的母树单丛茶 商务送礼">限量版的母树单丛茶 商务送礼</p>
+                        <p>￥128.00</p>
+                    </a>
+                    <a href="#" target="_blank">
+                        <div>
+                            <img src="img/zp-zy-icon7.jpg" alt="">
+                        </div>
+                        <p title="醉品朴茶·醇朴 2018年安溪铁观音 经典口碑款 清香型 NGY0840-250g">醉品朴茶·醇朴 2018年安溪铁观音 经典口碑款 清香型 NGY0840-250g</p>
+                        <p title="茶农直供 买就省70%">茶农直供 买就省70%</p>
+                        <p>￥180.00</p>
+                    </a>
+                </div>
+                <div class="zp-zyhc-right float-left">
+                    <div class="zp-zyhc-right-d">
+                        <a href="#" class="zp-zyhc-right-da" target="_blank">自饮锦囊</a>
+                        <div class="zp-zyhc-right-dd">
+                            <a href="#" target="_blank">
+                                <p title="世界杯冠军——爱喝茶的法国人">世界杯冠军——爱喝茶的法国人</p>
+                                <div class="clearfix">
+                                    <img src="img/zp-zy-right-1.png" alt="">
+                                    <p title="今天凌晨，法国人在莫斯科高高举起大力神杯。时隔20年，法国再次问鼎世界杯冠军，才华横溢的法国年轻一代刮起高卢雄风。提起法国，很多人马上会联想到红酒、香槟，却不知，在这个以浪漫著称的国度，喝茶之风如此盛">今天凌晨，法国人在莫斯科高高举起大力神杯。时隔20年，法国再次问鼎世界杯冠军，才华横溢的法国年轻一代刮起高卢雄风。提起法国，很多人马上会联想到红酒、香槟，却不知，在这个以浪漫著称的国度，喝茶之风如此盛</p>
+                                </div>
+                            </a>
+                            <a href="#" target="_blank">
+                                <p title="茶不是药神，却可以让你少吃药">茶不是药神，却可以让你少吃药</p>
+                                <div class="clearfix">
+                                    <img src="img/zp-zy-right-2.jpg" alt="">
+                                    <p title="其中有一个真实又让人心痛的镜头，生病的老奶奶抓住警官的手问他：“我只是想活下去，你能保证自己这辈子不生病吗？”所以这里小编整理出了许多喝茶的好处，希望大家在思考电影感触的同时，也将健康的生活习惯坚持下">其中有一个真实又让人心痛的镜头，生病的老奶奶抓住警官的手问他：“我只是想活下去，你能保证自己这辈子不生病吗？”所以这里小编整理出了许多喝茶的好处，希望大家在思考电影感触的同时，也将健康的生活习惯坚持下</p>
+                                </div>
+                            </a>
+                            <a href="#" target="_blank">
+                                <p title="喝茶，从茶杯开始">喝茶，从茶杯开始</p>
+                                <div class="clearfix">
+                                    <img src="img/zp-zy-right-3.png" alt="">
+                                    <p title="一只茶杯，是品茶人引动清、香、甘、活的梦幻逸品。茶杯，是香、甘、醇、活的凝聚，选美的茶杯是美化人生的一种提醒。茶杯幽邃表情凝视每回与品茗的相遇。品茗以杯就口，温润唇齿接触的刹那，杯的口沿顿时演化出茶的">一只茶杯，是品茶人引动清、香、甘、活的梦幻逸品。茶杯，是香、甘、醇、活的凝聚，选美的茶杯是美化人生的一种提醒。茶杯幽邃表情凝视每回与品茗的相遇。品茗以杯就口，温润唇齿接触的刹那，杯的口沿顿时演化出茶的</p>
+                                </div>
+                            </a>
+                            <a href="#" target="_blank">
+                                <p title="这样做轻松远离“空调病”!">这样做轻松远离“空调病”!</p>
+                                <div class="clearfix">
+                                    <img src="img/zp-zy-right-4.jpg" alt="">
+                                    <p title="夏日炎炎，正值中伏。一年里最热最磨人的时候到了。正所谓——“头伏饺子二伏面,三伏烙饼摊鸡蛋“。出门被晒晕，走路直烫脚，怎一个热字了得！夏天没有空调就根本就活不下去呀！然而，空调在给我们送来凉爽的同时，">夏日炎炎，正值中伏。一年里最热最磨人的时候到了。正所谓——“头伏饺子二伏面,三伏烙饼摊鸡蛋“。出门被晒晕，走路直烫脚，怎一个热字了得！夏天没有空调就根本就活不下去呀！然而，空调在给我们送来凉爽的同时，</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="#" class="zp-aaa">
+                            <h2>浏览更多</h2>
+                            <p>想要喝茶，不知如何选</p>
+                            <p>这里有一只锦囊</p>
+                            <img src="img/zp-right.png" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="zp-drink">
+    <div class="zp-wrapper">
+        <div>送礼</div>
+        <div class="zp-zyhc clearfix">
+            <div class="zp-zyhc-left float-left">
+                <a href="#">
+                    <img src="img/zp-sl.jpg" alt=""></a>
+                <a href="#" class="zp-aaa">
+                    <h2>送礼助手</h2>
+                    <p>为您用心推荐每一份礼物</p>
+                    <p></p>
+                    <img src="img/zp-right.png" alt="">
+                </a>
+            </div>
+            <div class="zp-zyhc-center float-left d2">
+                <a href="#" target="_blank">
+                    <div>
+                        <img src="img/zp-sl-icon1.jpg" alt="">
+                    </div>
+                    <p title="曦瓜 金骏眉 2018年春茶 红茶 特级 贺岁金骏眉 150g">曦瓜 金骏眉 2018年春茶 红茶 特级 贺岁金骏眉 150g</p>
+                    <p title="喜庆伴手礼，送礼自饮皆宜">喜庆伴手礼，送礼自饮皆宜</p>
+                    <p>￥158.00</p>
+                </a>
+                <a href="#" target="_blank">
+                    <div>
+                        <img src="img/zp-sl-icon2.jpg" alt="">
+                    </div>
+                    <p title="一匠一品 沈明双代表作 正山小种 2018年春茶 特级 150g  红茶礼盒">一匠一品 沈明双代表作 正山小种 2018年春茶 特级 150g  红茶礼盒</p>
+                    <p title="1200米鹫峰山脉上的野茶">1200米鹫峰山脉上的野茶</p>
+                    <p>￥232.00</p>
+                </a>
+                <a href="#" target="_blank">
+                    <div>
+                        <img src="img/zp-sl-icon3.jpg" alt="">
+                    </div>
+                    <p title="凤山2018年安溪铁观音 清韵礼盒 正味花香  250g">凤山2018年安溪铁观音 清韵礼盒 正味花香  250g</p>
+                    <p title="口感爽滑，性价比高">口感爽滑，性价比高</p>
+                    <p>￥180.00</p>
+                </a>
+                <a href="#" target="_blank">
+                    <div>
+                        <img src="img/zp-sl-icon4.jpg" alt="">
+                    </div>
+                    <p title="醉品叶界 刘安兴大师代表作 2018年大红袍 特级 192g 乌龙茶">醉品叶界 刘安兴大师代表作 2018年大红袍 特级 192g 乌龙茶</p>
+                    <p title="商务送礼爆品之一">商务送礼爆品之一</p>
+                    <p>￥380.00</p>
+                </a>
+                <a href="#" target="_blank">
+                    <div>
+                        <img src="img/zp-sl-icon5.jpg" alt="">
+                    </div>
+                    <p title="狮牌 西湖龙井 2018年明前茶 绿茶 一级 100g 和敬清怡 单盒">狮牌 西湖龙井 2018年明前茶 绿茶 一级 100g 和敬清怡 单盒</p>
+                    <p title="核心产区 PICC承保 鲜醇回甘">核心产区 PICC承保 鲜醇回甘</p>
+                    <p>￥298.00</p>
+                </a>
+                <a href="#" target="_blank">
+                    <div>
+                        <img src="img/zp-sl-icon6.jpg" alt="">
+                    </div>
+                    <p title="醉品叶界 六道十八法 2018年大树白茶 特级 120g 创新云南白茶">醉品叶界 六道十八法 2018年大树白茶 特级 120g 创新云南白茶</p>
+                    <p title="80余载积累，六道十八工艺突破传统工艺">80余载积累，六道十八工艺突破传统工艺</p>
+                    <p>￥488.00</p>
+                </a>
+            </div>
+            <div class="zp-zyhc-right float-left">
+                <div class="zp-zyhc-right-d">
+                    <a href="#" class="zp-zyhc-right-da" target="_blank">送礼锦囊</a>
+                    <div class="zp-zyhc-right-dd">
+                        <a href="#" target="_blank">
+                            <p title="醉品中国节，中秋茶礼定制全面开启">醉品中国节，中秋茶礼定制全面开启</p>
+                            <div class="clearfix">
+                                <img src="img/zp-zy-right-5.gif" alt="">
+                                <p title="礼物年年送，怎么送才有新意？这个中秋我们以茶的名义，颠覆你对礼的印象8月3日，醉品中国节中秋茶礼个性定制全面开启叶界、一匠一品、醉品朴茶为你提供提供全方位解决方案让你因礼而不同创造我的茶礼，我有我的f">礼物年年送，怎么送才有新意？这个中秋我们以茶的名义，颠覆你对礼的印象8月3日，醉品中国节中秋茶礼个性定制全面开启叶界、一匠一品、醉品朴茶为你提供提供全方位解决方案让你因礼而不同创造我的茶礼，我有我的f</p>
+                            </div>
+                        </a>
+                        <a href="#" target="_blank">
+                            <p title="中秋新品发布|叶界·龙腾四海，国礼定制版限量首发">中秋新品发布|叶界·龙腾四海，国礼定制版限量首发</p>
+                            <div class="clearfix">
+                                <img src="img/zp-zy-right-6.jpg" alt="">
+                                <p title="叶界·龙腾四海正山小种+建盏国礼组合醉品x双大师联名限定8.1中秋新品限量首发融合元首礼原创智慧开启国礼集成代表作见证大国外交礼仪传承千年国礼风范龙腾四海，“闽茶+建盏”的元首国礼组合，为元首礼原创大">叶界·龙腾四海正山小种+建盏国礼组合醉品x双大师联名限定8.1中秋新品限量首发融合元首礼原创智慧开启国礼集成代表作见证大国外交礼仪传承千年国礼风范龙腾四海，“闽茶+建盏”的元首国礼组合，为元首礼原创大</p>
+                            </div>
+                        </a>
+                        <a href="#" target="_blank">
+                            <p title="入夏，喝白茶好处竟然这么多？">入夏，喝白茶好处竟然这么多？</p>
+                            <div class="clearfix">
+                                <img src="img/zp-zy-right-7.jpg" alt="">
+                                <p title="夏天经常喝白茶的人，很少中暑。专家认为，这是因为白茶中含有多种氨基酸，具有退热、祛暑、解毒的功效。白茶比红茶、绿茶在制作方法上更为简单，它在采摘下来后，不经过任何炒青或揉捻动作，便直接晒干或烘干制作而">夏天经常喝白茶的人，很少中暑。专家认为，这是因为白茶中含有多种氨基酸，具有退热、祛暑、解毒的功效。白茶比红茶、绿茶在制作方法上更为简单，它在采摘下来后，不经过任何炒青或揉捻动作，便直接晒干或烘干制作而</p>
+                            </div>
+                        </a>
+                        <a href="#" target="_blank">
+                            <p title="沿袭魏家300年制茶技艺之作，醉品集团联合非遗大师魏月德推出极品陈年铁观音">沿袭魏家300年制茶技艺之作，醉品集团联合非遗大师魏月德推出极品陈年铁观音</p>
+                            <div class="clearfix">
+                                <img src="img/zp-zy-right-8.jpg" alt="">
+                                <p title="一说起茶叶收藏，很多茶友最先想到的不是普洱茶，就是白茶。事实上，随着“陈茶”的走俏，福建乌龙茶、福建红茶等茶类也纷纷成为茶友收藏的对象。如今，在茶市已经悄然掀起一股福建陈茶收藏热。业内人士表示，茶叶收">一说起茶叶收藏，很多茶友最先想到的不是普洱茶，就是白茶。事实上，随着“陈茶”的走俏，福建乌龙茶、福建红茶等茶类也纷纷成为茶友收藏的对象。如今，在茶市已经悄然掀起一股福建陈茶收藏热。业内人士表示，茶叶收</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <a href="#" class="zp-aaa">
+                        <h2>浏览更多</h2>
+                        <p>不懂如何送礼，让你头疼</p>
+                        <p>这里有一只锦囊</p>
+                        <img src="img/zp-right.png" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!--茶器/茶食-->
+    <div class="zp-drink">
+    <div class="zp-wrapper">
+        <div>茶器/茶食</div>
+        <div class="zp-zyhc clearfix">
+            <div class="zp-cq-left float-left ">
+                <a href="#" target="_blank">
+                    <img src="img/zp-cq-1.jpg" alt="">
+                </a>
+                <a href="#" target="_blank">
+                    <img src="img/zp-cq-2.jpg" alt="">
+                </a>
+            </div>
+            <div class="zp-zyhc-center float-left d3">
+                <a href="#" target="_blank">
+                    <div>
+                        <img src="img/zp-cq-icon1.jpg" alt="">
+                    </div>
+                    <p title="玻璃茶具 螺纹盖碗 盖碗">玻璃茶具 螺纹盖碗 盖碗</p>
+                    <p title="如冰清玉髓般透明">如冰清玉髓般透明</p>
+                    <p>￥72.00</p>
+                </a>
+                <a href="#" target="_blank">
+                    <div>
+                        <img src="img/zp-cq-icon2.jpg" alt="">
+                    </div>
+                    <p title="陶瓷茶具 企鹅快客杯 旅行办公轻便装 一壶两杯 粉红釉 3入">陶瓷茶具 企鹅快客杯 旅行办公轻便装 一壶两杯 粉红釉 3入</p>
+                    <p title="轻便小巧 年轻人都喜爱的旅行杯">轻便小巧 年轻人都喜爱的旅行杯</p>
+                    <p>￥128.00</p>
+                </a>
+                <a href="#" target="_blank">
+                    <div>
+                        <img src="img/zp-cq-icon3.jpg" alt="">
+                    </div>
+                    <p title="陶瓷茶具 点瓷成金盖碗套组 粉青釉洒金 10入">陶瓷茶具 点瓷成金盖碗套组 粉青釉洒金 10入</p>
+                    <p title="洒金金边点缀，雅致耐看">洒金金边点缀，雅致耐看</p>
+                    <p>￥368.00</p>
+                </a>
+                <a href="#" target="_blank">
+                    <div>
+                        <img src="img/zp-cq-icon4.jpg" alt="">
+                    </div>
+                    <p title="陶瓷茶具 茶壶 影青壶2号/梨型小壶">陶瓷茶具 茶壶 影青壶2号/梨型小壶</p>
+                    <p title="梨型小壶，清润透亮">梨型小壶，清润透亮</p>
+                    <p>￥136.00</p>
+                </a>
+                <a href="#" target="_blank">
+                    <div>
+                        <img src="img/zp-cq-icon5.jpg" alt="">
+                    </div>
+                    <p title="陶瓷茶具 整套功夫茶具 水立方正把套组 10入">陶瓷茶具 整套功夫茶具 水立方正把套组 10入</p>
+                    <p title="经典器型，创新设计">经典器型，创新设计</p>
+                    <p>￥298.00</p>
+                </a>
+                <a href="#" target="_blank">
+                    <div>
+                        <img src="img/zp-cq-icon6.jpg" alt="">
+                    </div>
+                    <p title="【匠人范华斌作品】建盏 桃源春晓 金油滴 单杯">【匠人范华斌作品】建盏 桃源春晓 金油滴 单杯</p>
+                    <p title="活水软水 喝茶更甜">活水软水 喝茶更甜</p>
+                    <p>￥469.00</p>
+                </a>
+            </div>
+            <div class="zp-cq-right float-left">
+                <a href="#" target="_blank">
+                    <div>
+                        <img src="img/zp-cq-icon7.jpg" alt="">
+                    </div>
+                    <p title="陶瓷茶具 日本匠人和田一人手作 有田烧彩虹对杯 粉">陶瓷茶具 日本匠人和田一人手作 有田烧彩虹对杯 粉</p>
+                    <p></p>
+                    <p>￥198.00</p>
+                </a>
+                <div class="zp-cq-right-last float-left">
+                    <a href="#" class="zp-small-aaa">
+                        <p title="紫砂壶 西施 200ml 朱泥 手工壶">紫砂壶 西施 200ml 朱泥 手工壶</p>
+                        <p>￥395.00</p>
+                        <img src="img/zp-cq-icon8.jpg" alt="">
+                    </a>
+                    <a href="#" class="zp-aaa">
+                        <h2>浏览更多</h2>
+                        <p>茶道配件</p>
+                        <p></p>
+                        <img src="img/zp-right.png" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!--醉品头条-->
+    <div class="zp-tt">
+    <div class="zp-toutiao">
+        <div class="zp-toutiao-d clearfix">
+            <span>醉品头条</span>
+            <span></span>
+            <span>带您了解醉品</span>
+            <a href="#" target="_blank">浏览更多</a>
+        </div>
+        <div class="zp-toutiao-d2 clearfix">
+            <a href="#" target="_blank">
+                <div>
+                    <img src="img/zp-tt-icon1.jpg" alt="">
+                </div>
+                <p title="醉品中秋茶礼定制丨专属定制多样组合，满足多场景消费需求">醉品中秋茶礼定制丨专属定制多样组合，满足多场景消费需求</p>
+                <p title="">定制茶的历史可追溯到清雍正年间，云贵总督鄂尔泰在滇设茶叶局，统管云南茶叶贸易。鄂尔泰勒令云南各茶山茶园顶级普洱茶由国家统一收购，挑选一流制茶师手工精制，并亲自督办，在贡茶上印《鄂尔泰》私宝，进贡朝廷。</p>
+            </a>
+            <a href="#" target="_blank">
+                <div>
+                    <img src="img/zp-tt-icon2.jpg" alt="">
+                </div>
+                <p title="醉品中国节，中秋茶礼定制全面开启">醉品中国节，中秋茶礼定制全面开启</p>
+                <p title="">礼物年年送，怎么送才有新意？</p>
+            </a>
+            <a href="#" target="_blank">
+                <div>
+                    <img src="img/zp-tt-icon3.jpg" alt="">
+                </div>
+                <p title="安化县政府携手醉品集团共同推进安化县茶产业互联网+新零售产业布局">安化县政府携手醉品集团共同推进安化县茶产业互联网+新零售产业布局</p>
+                <p title="">安化黑茶在中国茶产业中占有重要的地位，沉淀了深厚的中华茶文化，承载了安化的辉煌历史，已经成为中国茶产业的重要组成部分。然而随着互联网的快速发展，以及市场消费升级，消费者对安全、正宗、有品质的好茶的需求</p>
+            </a>
+            <a href="#" target="_blank">
+                <div>
+                    <img src="img/zp-tt-icon4.png" alt="">
+                </div>
+                <p title="醉品茶城更名盛典：醉品集团上亿补贴普惠茶界，新零售落地成效显著">醉品茶城更名盛典：醉品集团上亿补贴普惠茶界，新零售落地成效显著</p>
+                <p title="">茶叶自古是中国与“一带一路”国家和地区经贸往来的重要商品，茶文化也一直是中华文明传播于全世界的重要象征。在中国共产党建党97周年之际，醉品商城全新升级，于7月1日正式更名为醉品茶城。醉品茶城的全面升级</p>
+            </a>
+        </div>
+    </div>
+    </div>
+
+    <div id=foot></div>
+    <!--<footer>
+        <iframe src="zp-dl-footer.html" frameborder="0" class="my_foot"></iframe>
+    </footer>-->
+    
+
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/daojishi.js"></script>
+    <script src="js/erweima.js"></script>
+    <script src="js/index_khd.js"></script>
+    <script src="js/footer.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

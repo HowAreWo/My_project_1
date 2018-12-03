@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Generator" content="EditPlus®">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <title>register</title>
+    <link rel="stylesheet" href="css/zp-header.css">
+    <link rel="stylesheet" href="css/zp-gwc.css">
+
+</head>
+<body>
+<!--js 文件引入不成功！！！草拟吗  搞了老子几十分钟！！！
+    <script src="js.js"></script>             -->
+    <!--头部-->
+    <div class="header">
+        <!--第一行-->
+        <div class="header_1">
+            <!--左边-->
+            <div class="diyihang_1">
+                <ul>
+                    <li><a href="index.html">醉品茶城首页</a></li>
+                    <li><a href="#">OMO体验店加盟</a></li>
+                    <li class="zp_sjb" id="li1">
+                        <a href="#">醉品茶城手机版</a>
+                        <div class="zp-pic" id="div1">
+                            <img src="img/erweima.jpg" alt="">
+                            手机登录购买
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!--右边-->
+            <div class="diyihang_2">
+                <dl>
+                    <dt class="cart-num">
+                        <a href="zp-login.html">购物车</a>
+                        <!--登陆之后会显示这个购物车后面的0   不登陆不会显示  样式写好了！-->
+                        <span class="num headerCartNum">0</span>
+                    </dt>
+                    <!--下拉框？？？！！！-->
+                    <!--<dt class="cart-list" style="display:none;height:0;">
+                        <div class="list_empty">
+                            <a href="/">
+                                <img src="img/cart_03.png" alt="">
+                            </a>
+                        </div>
+                    </dt>-->
+                </dl>
+            </div>
+            <!--中间-->
+            <div class="diyihang_3">
+                <ul class="dl_zc">
+                    <li class="login_f active">
+                        <a href="zp-login.html">登陆</a>        
+                        <a href="zp-register.html">注册</a>
+                    </li>
+                    <li class="login_t" style="width:200px;">
+                        <a>欢迎：东东</a>        
+                        <a href="#" class="signout">注销</a>
+                    </li>
+
+                    <li><a href="#">我的订单</a></li>
+                    <li><a href="#">帮助中心</a></li>
+                    <li><a href="#">关于醉品</a></li>
+                    <li class="icon-phone"><a href="#">4006-066-068</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+        <!--第二行-->
+        <div class="header_2">
+            <a href="#" target="_blank">
+                <p style="position: relative;
+                    background: url(img/top_hf1.gif) no-repeat center center">
+                </p>
+            </a>
+        </div>
+        <!--第三行-->
+        <div class="header_3">
+            <div class="header_3_1 clearfix">
+                <!--醉品logo-->
+                <div class="zp_cc float-left">
+                    <a href="#" ><!--style="top:6px;"-->
+                        <img src="img/login1.png" alt="">
+                    </a>
+                </div>
+                <!--input 搜索框-->
+                <div class="zp_input float-left">
+                    <input type="text" name="keyword" placeholder="请输入关键词" class="search-text">
+                    <span class="search-btn"></span>
+                    <div class="input_bottom">
+                        <a href="#" target="_blank" class="first_hot">白茶</a>
+                        <a href="#" target="_blank">广东单枞</a>
+                        <a href="#" target="_blank">龙井</a>
+                        <a href="#" target="_blank">金骏眉</a>
+                        <a href="#" target="_blank">普洱</a>
+                    </div>
+                </div>
+                <!--全场商品...-->
+                <div class="zp_input_1 float-left">
+                    <ul>
+                        <li>
+                            <p>全场商品90天保价</p>
+                        </li>
+                        <li>
+                            <p>满59元免邮费</p>
+                        </li>
+                        <li>
+                            <p>2000城市货到付款</p>
+                        </li>
+                    </ul>
+                </div>
+                <!--二维码-->
+                <div class="zp_input_2 float-left">
+                    <img src="img/erweima.jpg" alt="">
+                    <span>手机登陆购买</span>
+                </div>
+            </div>
+        </div>
+        <!--全部商品分类-->
+    <div class="header-sel">
+        <div class="zp_fenlei">
+            <dl class="left-list float-left">
+                <dt class="left-listone">全部商品分类</dt>
+                <dd class="one-tea" style="display:none">
+                    <span>一键选茶</span>
+                <!--后面的四个选项a标签-->
+                    <div class="one-tea-1 float-left">
+                        <a href="#" target="_blank">自饮助手</a>
+                        <a href="#" target="_blank">自饮锦囊</a>
+                        <a href="#" target="_blank">送礼助手</a>
+                        <a href="#" target="_blank">送礼锦囊</a>
+                    </div>
+                </dd>
+                <!--下面的分类-->
+                <dd class="list-info" style="display:none">
+                    <dl class="clearfix">
+                        <dt class="big-title float-left">
+                            <a href="#">乌龙茶</a>
+                        </dt>
+                        <dd class="float-left">
+                            <ul class="clearfix">
+                                <li><a href="#">安溪铁观音</a></li>
+                                <li style="width:50px;"><a href="#">武夷岩茶</a></li>
+                                <li><a href="#">广东单枞</a></li>
+                                <li style="width:50px;"><a href="#">漳平水仙</a></li>
+                            </ul>
+                        </dd>
+                        <!--左下拉框-->
+
+                    </dl>
+                    <dl class="clearfix">
+                        <dt class="big-title float-left">
+                            <a href="#">红茶</a>
+                        </dt>
+                        <dd class="float-left">
+                            <ul class="clearfix">
+                                <li><a href="#">金骏眉</a></li>
+                                <li style="width:50px;"><a href="#">正山小种</a></li>
+                                <li><a href="#">祁门红茶</a></li>
+                                <li style="width:50px;"><a href="#">云南滇红</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearfix">
+                        <dt class="big-title float-left">
+                            <a href="#">绿茶</a>
+                        </dt>
+                        <dd class="float-left">
+                            <ul class="clearfix">
+                                <li><a href="#">龙井</a></li>
+                                <li style="width:50px;"><a href="#">四川绿茶</a></li>
+                                <li><a href="#">信阳毛尖</a></li>
+                                <li style="width:50px;"><a href="#">绿螺春</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearfix">
+                        <dt class="big-title float-left">
+                            <a href="#">黑茶</a>
+                        </dt>
+                        <dd class="float-left">
+                            <ul class="clearfix">
+                                <li><a href="#">普洱茶</a></li>
+                                <li style="width:50px;"><a href="#">安化黑茶</a></li>
+                                <li><a href="#">柑普茶</a></li>
+                                <li style="width:50px;"><a href="#">六堡茶</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearfix">
+                        <dt class="big-title float-left">
+                            <a href="#">白茶</a>
+                        </dt>
+                        <dd class="float-left">
+                            <ul class="clearfix">
+                                <li><a href="#">福鼎白茶</a></li>
+                                <li style="width:50px;"><a href="#">其他白茶</a></li>
+                                <li><a href="#"></a></li>
+                                <li style="width:50px;"><a href="#"></a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+
+                    
+                    <dl class="clearfix">
+                        <dt class="big-title float-left">
+                            <a href="#">花茶</a>
+                        </dt>
+                        <dd class="float-left">
+                            <ul class="clearfix">
+                                <li><a href="#">茉莉花茶</a></li>
+                                <li style="width:50px;"><a href="#">玫瑰花茶</a></li>
+                                <li><a href="#">菊花茶</a></li>
+                                <li style="width:50px;"><a href="#">其他花茶</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearfix">
+                        <dt class="big-title float-left">
+                            <a href="#">茶器</a>
+                        </dt>
+                        <dd class="float-left">
+                            <ul class="clearfix">
+                                <li><a href="#">陶瓷茶具</a></li>
+                                <li style="width:50px;"><a href="#">紫砂茶具</a></li>
+                                <li><a href="#">玻璃茶具</a></li>
+                                <li style="width:50px;"><a href="#">茶盘</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </dd>
+            </dl>
+            <ul class="zp-pingpai">
+                <li><a href="#" target="_blank">品牌集成馆</a></li>
+                <li><a href="#" target="_blank">大师名匠馆</a></li>
+                <li><a href="#" target="_blank">线下OMO体验店</a></li>
+                <li><a href="#" target="_blank">积分商城</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+
+    <script src="js/erweima.js"></script>
+    <script src="js/products.js"></script>
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
