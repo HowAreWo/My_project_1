@@ -1,0 +1,237 @@
+.zp-list{
+    background-color: #f5f5f5;
+    margin-top:1px;
+}
+.zp-list-1{
+    width: 1226px;
+    margin: 0 auto;
+    position: relative;
+}
+/*zp-list-ss 首页/搜索*/
+.zp-list-ss ul li{
+    float: left;
+    line-height: 40px;
+    font-size:12px;
+    color:#d2d2d2;
+    margin-right: 5px;
+}
+.zp-list-ss ul li a{
+    color:#b0b0b0;
+    font-size:12px;
+}
+/*zp-list-xs 销售*/
+.zp-list-xs{
+    width:100%;
+    background-color: #fff;
+    position: relative;
+}
+.zp-list-xs div ul{
+    float: right;
+}
+.zp-list-xs div ul li{
+    margin-right: 40px;
+    line-height: 60px;
+    font-size:14px;
+    float: left;
+}
+.zp-list-xs div ul li a:hover{
+    color:#ff3600;
+}
+.zp-list-xs div ul li:nth-child(3){
+    background-image: url("../img/xiajiantou.jpg");
+    background-repeat:no-repeat;
+    background-position: 26px center;
+    padding-right:10px;
+}
+.zp-list-xs div ul li a{
+    color:#000;
+}
+.zp-list-xs div ul li:nth-child(1) a{
+    color:#ff3600;
+}
+/*zp-list-sp 商品列表*/
+.zp-list-sp{
+    width: 100%;
+    margin-top: 30px;
+    background-color: #f5f5f5;
+}
+.zp-list-sp-1{
+    position: relative;
+    overflow: hidden;
+    width:296px;
+    height:434px;
+    background-color: #fff;
+    margin-right:14px;
+    margin-bottom:14px;
+    box-sizing: border-box;
+    padding:30px 20px 0;
+}
+.zp-list-sp-1:nth-child(4n+4) {
+    margin-right: 0;
+}
+.zp-list-sp-1:hover{
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    -webkit-transform: translate3d(0, -2px, 0);
+    color:#ff3600;
+}
+/*影响下面的p标签*/
+.zp-list-sp-1:hover .zp-cart-show{
+    bottom: 0px;
+}
+.zp-list-sp-1 .zp-right-img{
+    position: absolute;
+    right:10px;
+    top:0;
+    max-width:80px;
+    max-height:80px;
+    overflow: hidden;
+    z-index:10;
+}
+.zp-list-sp-1 dl dt a{
+    display: block;
+    width:220px;
+    height:220px;
+    overflow: hidden;
+    margin:0 auto;
+    position: relative;
+    color:#b0b0b0;
+}
+
+.zp-list-sp-1 dl dt a img{
+    max-width: 100%;
+    position: absolute;
+    margin:auto;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+}
+.zp-list-sp-1-p1{
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.5;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-height: 42px;
+    /*如果超出了限制 就...显示  会隐藏*/
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    margin: 21px 0 10px;
+}
+.zp-list-sp-1-p2{
+    margin: 0 auto 20px;
+    width: 202px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 13px;
+    box-sizing: border-box;
+    color: #b0b0b0;
+    max-height: 12px;
+    padding: 0 20px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.zp-nowPrice{
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #c00000;
+    line-height: 14px;
+}
+/*好评*/
+.zp-peopleGood{
+    line-height: 14px;
+    text-align: center;
+    font-size: 14px;
+    color: #ccc;
+}
+/*js 引入加入购物车  还没有出来！！！！*/
+.zp-cart-show{
+    position: absolute;
+    bottom: -52px;
+    left: 0;
+    -webkit-transition: all .2s;
+    cursor: pointer;
+}
+.zp-cart-show p{
+    width: 300px;
+    font-size: 16px;
+    line-height: 52px;
+    background-color: #ff3600;
+    color: #fff;
+    text-align: center;
+    -webkit-transition: all .2s;
+}
+.zp-cart-show p:hover{
+    background-color: #ff3300;
+    color: #fff;
+}
+.zp-cart-show p input{
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    text-indent: 15px;
+}
+/*zp-list-fy 分页*/
+.zp-list-fy{
+    padding: 42px 0;
+    position: relative;
+    padding-bottom: 76px;
+}
+.zp-list-page{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+/*页码！！！*/
+.zp-list-page .zp-page{
+    font-size:14px;
+}
+.zp-list-page .new-pg.disabled{
+    background-color: #fff;
+    color: #d0dde2;
+    cursor: not-allowed;
+}
+.zp-list-page .new-pg.pre,.zp-list-page .new-pg.next{
+    width:82px;
+}
+.zp-list-page .new-pg{
+    width:30px;
+    line-height: 30px;
+    color:#666463;
+    background-color:#f6f6f6;
+    text-align: center;
+    font-size:14px;
+    cursor:pointer;
+    border:1px solid #e7e7e7;
+    margin-right:4px;
+    -webkit-transtion:all .2s;
+}
+.zp-list-page .active{
+    border:none;
+    color:#e55051;
+}
+.zp-list-page .null{
+    border:none;
+}
+
+.zp-list-page label{
+    cursor: default;
+    font-size: 14px;
+}
+.zp-list-page label input{
+    width: 29px;
+    line-height: 30px;
+    border: 1px solid #e6e6e6;
+    text-indent: 0;
+    text-align: center;
+}
+.zp-list-page label button{
+    line-height: 28px;
+    text-align: center;
+    border: 1px solid #e5e5e5;
+    background-color: #f6f6f6;
+    margin-left: 8px;
+}
