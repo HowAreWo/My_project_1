@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>情侣大冒险</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f9fafb;min-height:100vh;color:#1f2937}
+.page{max-width:440px;margin:0 auto;padding:16px 16px 80px;min-height:100vh}
+.btn{width:100%;padding:12px;border-radius:12px;font-size:15px;font-weight:600;text-align:center;border:none;cursor:pointer;transition:all .15s}
+.btn:active{transform:scale(.97)}
+.btn-p{background:#ec4899;color:#fff}
+.btn-o{background:#fff;border:2px solid #ec4899;color:#ec4899}
+.card{background:#fff;border-radius:16px;padding:20px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.input{width:100%;padding:12px 16px;border-radius:12px;border:1px solid #e5e7eb;background:#f9fafb;font-size:15px;outline:none}
+.input:focus{border-color:#ec4899;box-shadow:0 0 0 3px rgba(236,72,153,.1)}
+.toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#ef4444;color:#fff;padding:10px 24px;border-radius:10px;font-size:14px;z-index:999;animation:fadeIn .3s}
+@keyframes fadeIn{from{opacity:0;transform:translateX(-50%) translateY(-10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+.nav{position:fixed;bottom:0;left:0;right:0;max-width:440px;margin:0 auto;background:#fff;border-top:1px solid #f3f4f6;display:flex;justify-content:space-around;padding:8px 16px;z-index:50}
+.nav a{display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;padding:6px 12px;border-radius:8px;font-size:11px;font-weight:500;color:#9ca3af}
+.nav a.active{color:#ec4899}
+.nav span{font-size:20px}
+.spin{animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>/* v3 - filter-enabled */
+const API = '/api';
+const token = () => localStorage.getItem('token');
+async function req(path, opts = {}) {
+  const h = { 'Content-Type': 'application/json', ...opts.headers };
+  if (token()) h['Authorization'] = 'Bearer ' + token();
+  const r = await fetch(API + path, { ...opts, headers: h });
+  const d = await r.json();
+  if (d.code !== 200) throw new Error(d.message || 'error');
+  return d.data;
+}
+
+const e = (tag, attrs = {}, ...kids) => {
+  const el = document.createElement(tag);
+  Object.entries(attrs).forEach(([k, v]) => {
+    if (k === 'className') el.className = v;
+    else if (k.startsWith('on')) el.addEventListener(k.slice(2).toLowerCase(), v);
+    else if (k === 'style') Object.assign(el.style, v);
+    else el.setAttribute(k, v);
+  });
+  kids.forEach(k => el.appendChild(typeof k === 'string' ? document.createTextNode(k) : k));
+  return el;
+};
+
+let currentView = '';
+
+
+var gameApi = {
+  randomPair: function(l,c) { return req('/game/random' + (l || c ? '?level='+(l||'')+'&category='+(c||'') : '')); },
+  randomTruth: function(l,c) { return req('/game/random/truth' + (l || c ? '?level='+(l||'')+'&category='+(c||'') : '')); },
+  randomDare: function(l,c) { return req('/game/random/dare' + (l || c ? '?level='+(l||'')+'&category='+(c||'') : '')); },
+  categories: function(t) { return req('/game/categories' + (t ? '?type='+t : '')); }
+}
+function toast(msg) {
+  const t = e('div', { className: 'toast' }, msg);
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 2500);
+}
+
+function navigate(path) {
+  history.pushState(null, '', path);
+  render();
+}
+
+function render() {
+  const root = document.getElementById('root');
+  root.innerHTML = '';
+  const path = location.pathname;
+
+  if (!token() && path !== '/register') { currentView = 'login'; }
+  else if (!token() && path === '/register') { currentView = 'register'; }
+  else if (path === '/play') { currentView = 'play'; }
+  else if (path === '/membership') { currentView = 'membership'; }
+  else if (path === '/punish') { currentView = 'punish'; }
+  else { currentView = 'home'; }
+
+  root.appendChild(document.createElement('div'));
+  const container = root.firstChild;
+  container.className = 'page';
+
+  if (currentView === 'login') renderLogin(container);
+  else if (currentView === 'register') renderRegister(container);
+  else if (currentView === 'home') { renderHome(container); renderNav(root); }
+  else if (currentView === 'play') { renderPlay(container); renderNav(root); }
+  else if (currentView === 'membership') { renderMembership(container); renderNav(root); }
+  else if (currentView === 'punish') { renderPunish(container); renderNav(root); }
+}
+
+function renderNav(root) {
+  const path = location.pathname;
+  const nav = e('nav', { className: 'nav' },
+    e('a', { href: '/', className: path === '/' ? 'active' : '', onClick: e => { e.preventDefault(); navigate('/'); } },
+      e('span', {}, '\u{1F3E0}'), '\u{9996}\u{9875}'),
+    e('a', { href: '/play', className: path === '/play' ? 'active' : '', onClick: e => { e.preventDefault(); navigate('/play'); } },
+      e('span', {}, '\u{1F3AE}'), '\u{6E38}\u{620F}'),
+    e('a', { href: '/punish', className: path === '/punish' ? 'active' : '', onClick: e => { e.preventDefault(); navigate('/punish'); } },
+      e('span', {}, '\u{26A1}'), '\u{60E9}\u{7F5A}'),
+    e('a', { href: '/membership', className: path === '/membership' ? 'active' : '', onClick: e => { e.preventDefault(); navigate('/membership'); } },
+      e('span', {}, '\u{1F451}'), '\u{4F1A}\u{5458}')
+  );
+  root.appendChild(nav);
+}
+
+function renderLogin(container) {
+  const d = e('div', { style: { display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '80vh' } });
+  d.appendChild(e('div', { style: { textAlign: 'center', marginBottom: '32px' } },
+    e('div', { style: { fontSize: '48px' } }, '\u{1F495}'),
+    e('h1', { style: { fontSize: '24px', fontWeight: 'bold', marginTop: '8px' } }, '\u{60C5}\u{4FA3}\u{4E92}\u{52A8}'),
+    e('p', { style: { color: '#9ca3af', fontSize: '13px', marginTop: '4px' } }, '\u{771F}\u{5FC3}\u{8BDD} \u00B7 \u{5927}\u{5192}\u{9669}')
+  ));
+  const user = e('input', { className: 'input', placeholder: '\u{7528}\u{6237}\u{540D}', style: { marginBottom: '12px' } });
+  const pass = e('input', { className: 'input', type: 'password', placeholder: '\u{5BC6}\u{7801}', style: { marginBottom: '16px' } });
+  const btn = e('button', { className: 'btn btn-p' }, '\u{767B}\u{5F55}');
+  const link = e('p', { style: { textAlign: 'center', marginTop: '16px', fontSize: '13px', color: '#6b7280' } },
+    '\u{8FD8}\u{6CA1}\u{6709}\u{8D26}\u{53F7}\u{FF1F}',
+    e('a', { href: '/register', style: { color: '#ec4899', fontWeight: 500, cursor: 'pointer', textDecoration: 'none' },
+      onClick: e => { e.preventDefault(); navigate('/register'); } }, '\u{7ACB}\u{5373}\u{6CE8}\u{518C}')
+  );
+
+  btn.addEventListener('click', async () => {
+    btn.textContent = '\u{767B}\u{5F55}\u{4E2D}...'; btn.disabled = true;
+    try {
+      const data = await req('/auth/login', { method: 'POST', body: JSON.stringify({ username: user.value, password: pass.value }) });
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('user', JSON.stringify(data));
+      navigate('/');
+    } catch (err) { toast(err.message); btn.textContent = '\u{767B}\u{5F55}'; btn.disabled = false; }
+  });
+
+  d.appendChild(user); d.appendChild(pass); d.appendChild(btn); d.appendChild(link);
+  container.appendChild(d);
+}
+
+function renderRegister(container) {
+  const d = e('div', { style: { display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '80vh' } });
+  d.appendChild(e('div', { style: { textAlign: 'center', marginBottom: '24px' } },
+    e('div', { style: { fontSize: '40px' } }, '\u{1F49D}'),
+    e('h1', { style: { fontSize: '20px', fontWeight: 'bold', marginTop: '8px' } }, '\u{521B}\u{5EFA}\u{8D26}\u{53F7}')
+  ));
+  const user = e('input', { className: 'input', placeholder: '\u{7528}\u{6237}\u{540D} *', style: { marginBottom: '10px' } });
+  const pass = e('input', { className: 'input', type: 'password', placeholder: '\u{5BC6}\u{7801}\u{FF08}\u{81F3}\u{5C11}6\u{4F4D}\u{FF09} *', style: { marginBottom: '10px' } });
+  const nick = e('input', { className: 'input', placeholder: '\u{6635}\u{79F0}\u{FF08}\u{9009}\u{586B}\u{FF09}', style: { marginBottom: '16px' } });
+  const btn = e('button', { className: 'btn btn-p' }, '\u{6CE8}\u{518C}');
+  const link = e('p', { style: { textAlign: 'center', marginTop: '16px', fontSize: '13px', color: '#6b7280' } },
+    '\u{5DF2}\u{6709}\u{8D26}\u{53F7}\u{FF1F}',
+    e('a', { href: '/login', style: { color: '#ec4899', fontWeight: 500, cursor: 'pointer', textDecoration: 'none' },
+      onClick: e => { e.preventDefault(); navigate('/login'); } }, '\u{53BB}\u{767B}\u{5F55}')
+  );
+
+  btn.addEventListener('click', async () => {
+    if (pass.value.length < 6) { toast('\u{5BC6}\u{7801}\u{81F3}\u{5C11}6\u{4F4D}'); return; }
+    btn.textContent = '\u{6CE8}\u{518C}\u{4E2D}...'; btn.disabled = true;
+    try {
+      const data = await req('/auth/register', { method: 'POST', body: JSON.stringify({ username: user.value, password: pass.value, nickname: nick.value || user.value }) });
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('user', JSON.stringify(data));
+      navigate('/');
+    } catch (err) { toast(err.message); btn.textContent = '\u{6CE8}\u{518C}'; btn.disabled = false; }
+  });
+
+  d.appendChild(user); d.appendChild(pass); d.appendChild(nick); d.appendChild(btn); d.appendChild(link);
+  container.appendChild(d);
+}
+
+function renderHome(container) {
+  const userData = JSON.parse(localStorage.getItem('user') || '{}');
+
+  const header = e('div', { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' } });
+  header.appendChild(e('div', {},
+    e('h1', { style: { fontSize: '18px', fontWeight: 'bold' } }, 'Hi, ' + (userData.nickname || userData.username)),
+    e('p', { style: { fontSize: '13px', color: '#9ca3af' } }, userData.membership === 'FREE' ? '\u{514D}\u{8D39}\u{7528}\u{6237}' : userData.membership + '\u{4F1A}\u{5458}')
+  ));
+  const logoutBtn = e('button', { style: { background: 'none', border: 'none', color: '#9ca3af', cursor: 'pointer', fontSize: '13px' } }, '\u{9000}\u{51FA}');
+  logoutBtn.addEventListener('click', () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    navigate('/login');
+  });
+  header.appendChild(logoutBtn);
+  container.appendChild(header);
+
+  const playCard = e('div', { className: 'card', style: { textAlign: 'center', padding: '32px', marginBottom: '16px', cursor: 'pointer' } });
+  playCard.appendChild(e('div', { style: { fontSize: '56px', marginBottom: '12px' } }, '\u{1F3B2}'));
+  playCard.appendChild(e('p', { style: { fontSize: '18px', fontWeight: 'bold' } }, '\u{5F00}\u{59CB}\u{6E38}\u{620F}'));
+  playCard.appendChild(e('p', { style: { fontSize: '13px', color: '#9ca3af', marginTop: '4px' } }, '\u{968F}\u{673A}\u{62BD}\u{53D6}\u{771F}\u{5FC3}\u{8BDD}\u{6216}\u{5927}\u{5192}\u{9669}'));
+  playCard.addEventListener('click', () => navigate('/play'));
+  container.appendChild(playCard);
+
+  const grid = e('div', { style: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '16px' } });
+  const truth = e('button', { className: 'card', style: { textAlign: 'center', padding: '20px', cursor: 'pointer', border: 'none' } },
+    e('div', { style: { fontSize: '32px', marginBottom: '8px' } }, '\u{1F4AC}'),
+    e('p', { style: { fontWeight: 600 } }, '\u{771F}\u{5FC3}\u{8BDD}'));
+  truth.addEventListener('click', () => navigate('/play?mode=truth'));
+  const dare = e('button', { className: 'card', style: { textAlign: 'center', padding: '20px', cursor: 'pointer', border: 'none' } },
+    e('div', { style: { fontSize: '32px', marginBottom: '8px' } }, '\u{1F525}'),
+    e('p', { style: { fontWeight: 600 } }, '\u{5927}\u{5192}\u{9669}'));
+  dare.addEventListener('click', () => navigate('/play?mode=dare'));
+  grid.appendChild(truth); grid.appendChild(dare);
+  container.appendChild(grid);
+
+  if (!userData.membership || userData.membership === 'FREE') {
+    const vipCard = e('div', { className: 'card', style: { background: 'linear-gradient(135deg, #ec4899, #db2777)', color: '#fff', textAlign: 'center', padding: '20px', marginBottom: '16px', cursor: 'pointer' } });
+    vipCard.appendChild(e('p', { style: { fontSize: '13px', opacity: '.8' } }, '\u{89E3}\u{9501}\u{66F4}\u{591A}\u{73A9}\u{6CD5}'));
+    vipCard.appendChild(e('p', { style: { fontSize: '20px', fontWeight: 'bold', marginTop: '4px' } }, '\u{1F451} \u{5F00}\u{901A}\u{4F1A}\u{5458}'));
+    vipCard.addEventListener('click', () => navigate('/membership'));
+    container.appendChild(vipCard);
+  }
+
+  const info = e('div', { className: 'card' });
+  info.appendChild(e('p', { style: { fontWeight: 600, fontSize: '14px', marginBottom: '8px' } }, '\u{
+      e('div', { style: { fontSize: '13px', color: '#6b7280', lineHeight: '1.8' } }, '⚡ 惩罚模式：输了接受惩罚'),73A9}\u{6CD5}\u{4ECB}\u{7ECD}'));
+  ['\u{1F3AF} \u{968F}\u{673A}\u{62BD}\u{53D6}\u{771F}\u{5FC3}\u{8BDD}\u{6216}\u{5927}\u{5192}\u{9669}\u{9898}\u{76EE}',
+   '\u{1F495} \u{548C}\u{4F60}\u{7684}\u{4F34}\u{4FA3}\u{8F6E}\u{6D41}\u{63A5}\u{53D7}\u{6311}\u{6218}',
+   '\u{1F451} \u{4F1A}\u{5458}\u{89E3}\u{9501}\u{66F4}\u{591A}\u{9AD8}\u{80FD}\u{9898}\u{76EE
+   '\u{26A1} \u{60E9}\u{7F5A}\u{6A21}\u{5F0F}\u{FF1A}\u{8F93}\u{4E86}\u{63A5}\u{53D7}\u{60E9}\u{7F5A}',}'].forEach(t => {
+    info.appendChild(e('div', { style: { fontSize: '13px', color: '#6b7280', lineHeight: '1.8' } }, t));
+  });
+  container.appendChild(info);
+}
+
+var renderPlayId = 0;
+function renderPlay(container) {
+  container.innerHTML = "";
+  var myRenderId = ++renderPlayId;
+  const params = new URLSearchParams(location.search);
+  let mode = params.get('mode') || 'random';
+
+    var selLevel = 'all';
+  var selCategory = 'all';
+  var categories = [];
+
+  req('/game/categories?type=' + mode).then(function(d) { if (myRenderId === renderPlayId) { categories = d; renderFilters(); } }).catch(function(){});
+
+  function renderFilters() {
+    var filterRow = container.querySelector('.filter-row');
+    if (filterRow) filterRow.remove();
+    filterRow = e('div', { className: 'filter-row', style: { display: 'flex', gap: '8px', marginBottom: '16px', justifyContent: 'center' } });
+
+    // Level select
+    var lvlSel = e('select', { style: { padding: '8px 12px', borderRadius: '10px', border: '1px solid #e5e7eb', background: '#fff', fontSize: '13px', color: '#374151', cursor: 'pointer', outline: 'none' } },
+      e('option', { value: 'all' }, '难度'),
+      e('option', { value: '1' }, '难度 1'),
+      e('option', { value: '2' }, '难度 2'),
+      e('option', { value: '3' }, '难度 3')
+    );
+    lvlSel.value = selLevel;
+    lvlSel.value = selLevel;
+    filterRow.appendChild(lvlSel);
+
+    // Category select
+    var catSel = e('select', { style: { padding: '8px 12px', borderRadius: '10px', border: '1px solid #e5e7eb', background: '#fff', fontSize: '13px', color: '#374151', cursor: 'pointer', outline: 'none', flex: '1' } },
+      e('option', { value: 'all' }, '类别')
+    );
+    if (categories && categories.length) {
+      categories.forEach(function(c) {
+        catSel.appendChild(e('option', { value: c }, c));
+      });
+    }
+    catSel.value = selCategory;
+    catSel.addEventListener('change', function() { selCategory = this.value; });
+    filterRow.appendChild(catSel);
+
+    // Auto-trigger draw on dropdown change
+    var triggerDraw = function() {
+      var btn = container.querySelector('.btn-p');
+      if (btn) btn.click();
+    };
+    lvlSel.addEventListener('change', function() { selLevel = this.value; });
+    
+    container.insertBefore(filterRow, container.querySelector('.filter-row') || tabs);
+  }
+
+  const tabs = e('div', { style: { display: 'flex', justifyContent: 'center', gap: '8px', marginBottom: '24px' } });
+  const modes = [
+    ['random', '\u{1F3B2} \u{968F}\u{673A}'],
+    ['truth', '\u{1F4AC} \u{771F}\u{5FC3}\u{8BDD}'],
+    ['dare', '\u{1F525} \u{5927}\u{5192}\u{9669}']
+  ];
+  modes.forEach(([m, label]) => {
+    const tab = e('button', {
+      style: { padding: '8px 20px', borderRadius: '20px', border: 'none', fontSize: '13px', fontWeight: 500, cursor: 'pointer',
+        background: mode === m ? '#ec4899' : '#f3f4f6', color: mode === m ? '#fff' : '#6b7280' }
+    }, label);
+    tab.addEventListener('click', () => { history.replaceState(null, '', '/play?mode=' + m); renderPlay(container); });
+    tabs.appendChild(tab);
+  });
+  container.appendChild(tabs);
+
+  const resultArea = e('div', { style: { display: 'flex', flexDirection: 'column', alignItems: 'center' } });
+
+  const drawBtn = e('button', { className: 'btn btn-p', style: { maxWidth: '240px' } }, '\u{1F3AF} \u{70B9}\u{51FB}\u{62BD}\u{53D6}');
+  drawBtn.addEventListener('click', async () => {
+    drawBtn.textContent = '\u{62BD}\u{53D6}\u{4E2D}...'; drawBtn.disabled = true;
+    resultArea.innerHTML = '';
+    const loading = e('div', { className: 'card', style: { width: '100%', textAlign: 'center', padding: '40px' } },
+      e('div', { style: { fontSize: '36px' } }, '\u{1F3B0}'),
+      e('p', { style: { color: '#9ca3af', marginTop: '8px' } }, '\u{62BD}\u{53D6}\u{4E2D}...'));
+    resultArea.appendChild(loading);
+
+    try {
+      var lv = selLevel !== 'all' ? selLevel : null;
+      var cat = selCategory !== 'all' ? selCategory : null;
+      var resp;
+      if (mode === 'truth') resp = await gameApi.randomTruth(lv, cat);
+      else if (mode === 'dare') resp = await gameApi.randomDare(lv, cat);
+      else resp = await gameApi.randomPair(lv, cat);
+      resultArea.innerHTML = '';
+      showResult(resultArea, resp, mode);
+      resultArea.appendChild(drawBtn);
+    } catch (err) {
+      resultArea.innerHTML = '';
+      resultArea.appendChild(e('p', { style: { color: '#ef4444' } }, err.message));
+      resultArea.appendChild(drawBtn);
+    }
+    drawBtn.textContent = '\u{1F504} \u{518D}\u{62BD}\u{4E00}\u{6B21}'; drawBtn.disabled = false;
+  });
+
+  resultArea.appendChild(drawBtn);
+  container.appendChild(resultArea);
+}
+
+function showResult(area, data, mode) {
+  if (mode === 'random') {
+    ['truth', 'dare'].forEach((type, i) => {
+      const item = data[type];
+      if (!item) return;
+      const colors = type === 'truth' ? ['#fdf2f8','#fce7f3','#fbcfe8','#ec4899','#fce7f3']
+        : ['#fff7ed','#ffedd5','#fed7aa','#f97316','#ffedd5'];
+      const card = e('div', {
+        className: 'card',
+        style: { marginBottom: '12px', width: '100%', animation: 'fadeIn .5s', animationDelay: (i * .1) + 's', background: colors[0], border: '1px solid ' + colors[2] }
+      });
+      const badge = e('div', { style: { display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' } });
+      badge.appendChild(e('span', { style: { fontSize: '20px' } }, type === 'truth' ? '\u{1F4AC}' : '\u{1F525}'));
+      badge.appendChild(e('span', { style: { fontSize: '11px', fontWeight: 600, background: colors[4], color: colors[3], padding: '2px 8px', borderRadius: '10px' } },
+        (type === 'truth' ? '\u{771F}\u{5FC3}\u{8BDD}' : '\u{5927}\u{5192}\u{9669}') + ' \u00B7 \u{96BE}\u{5EA6} ' + (item.level || 1)));
+      badge.appendChild(e('span', { style: { fontSize: '11px', color: '#9ca3af' } }, item.category));
+      card.appendChild(badge);
+      card.appendChild(e('p', { style: { fontSize: '17px', fontWeight: 600, lineHeight: '1.6' } }, item.content));
+      area.appendChild(card);
+    });
+  } else {
+    const colors = mode === 'truth' ? ['#fdf2f8','#fce7f3','#fbcfe8','#ec4899','#fce7f3']
+      : ['#fff7ed','#ffedd5','#fed7aa','#f97316','#ffedd5'];
+    const card = e('div', {
+      className: 'card',
+      style: { marginBottom: '12px', width: '100%', animation: 'fadeIn .5s', background: colors[0], border: '1px solid ' + colors[2] }
+    });
+    const badge = e('div', { style: { display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' } });
+    badge.appendChild(e('span', { style: { fontSize: '20px' } }, mode === 'truth' ? '\u{1F4AC}' : '\u{1F525}'));
+    badge.appendChild(e('span', { style: { fontSize: '11px', fontWeight: 600, background: colors[4], color: colors[3], padding: '2px 8px', borderRadius: '10px' } },
+      (mode === 'truth' ? '\u{771F}\u{5FC3}\u{8BDD}' : '\u{5927}\u{5192}\u{9669}') + ' \u00B7 \u{96BE}\u{5EA6} ' + (data.level || 1)));
+    badge.appendChild(e('span', { style: { fontSize: '11px', color: '#9ca3af' } }, data.category));
+    card.appendChild(badge);
+    card.appendChild(e('p', { style: { fontSize: '17px', fontWeight: 600, lineHeight: '1.6' } }, data.content));
+    area.appendChild(card);
+  }
+}
+
+function renderMembership(container) {
+  const userData = JSON.parse(localStorage.getItem('user') || '{}');
+
+  const statusCard = e('div', { className: 'card', style: { background: 'linear-gradient(135deg, #ec4899, #db2777)', color: '#fff', marginBottom: '20px' } });
+  statusCard.appendChild(e('p', { style: { fontSize: '13px', opacity: '.8' } }, '\u{5F53}\u{524D}\u{8EAB}\u{4EFD}'));
+  statusCard.appendChild(e('p', { style: { fontSize: '24px', fontWeight: 'bold', marginTop: '4px' } },
+    userData.membership === 'FREE' ? '\u{514D}\u{8D39}\u{7528}\u{6237}' : userData.membership + ' \u{4F1A}\u{5458}'));
+  container.appendChild(statusCard);
+
+  const plansContainer = e('div', { style: { display: 'flex', flexDirection: 'column', gap: '12px' } });
+  const loading = e('p', { style: { textAlign: 'center', color: '#9ca3af', padding: '20px' } }, '\u{52A0}\u{8F7D}\u{4E2D}...');
+  plansContainer.appendChild(loading);
+  container.appendChild(plansContainer);
+
+  req('/membership/plans').then(plans => {
+    plansContainer.innerHTML = '';
+    plans.forEach(plan => {
+      const card = e('div', { className: 'card', style: { display: 'flex', justifyContent: 'space-between', alignItems: 'center' } });
+      const info = e('div', {});
+      info.appendChild(e('p', { style: { fontWeight: 600 } }, plan.name));
+      info.appendChild(e('p', { style: { fontSize: '11px', color: '#9ca3af', marginTop: '2px' } }, '\u{65F6}\u{957F} ' + plan.days + ' \u{5929} \u00B7 ' + plan.level + ' \u{7B49}\u{7EA7}'));
+      info.appendChild(e('p', { style: { fontSize: '20px', fontWeight: 'bold', color: '#ec4899', marginTop: '4px' } },
+        '\u{FFE5}' + plan.price + e('span', { style: { fontSize: '13px', fontWeight: 'normal', color: '#9ca3af' } }, ' /' + plan.days + '\u{5929}')));
+      card.appendChild(info);
+      const buyBtn = e('button', { style: { padding: '10px 24px', borderRadius: '12px', border: 'none', background: '#ec4899', color: '#fff', fontWeight: 600, fontSize: '13px', cursor: 'pointer' } }, '\u{8D2D}\u{4E70}');
+      buyBtn.addEventListener('click', async () => {
+        buyBtn.textContent = '\u{5904}\u{7406}\u{4E2D}...'; buyBtn.disabled = true;
+        try {
+          const order = await req('/membership/order?planId=' + plan.id, { method: 'POST' });
+          await req('/membership/pay/' + order.id, { method: 'POST' });
+          alert('\u{8D2D}\u{4E70}\u{6210}\u{529F}\u{FF01}');
+          location.reload();
+        } catch (err) { alert(err.message); }
+        buyBtn.textContent = '\u{8D2D}\u{4E70}'; buyBtn.disabled = false;
+      });
+      card.appendChild(buyBtn);
+      plansContainer.appendChild(card);
+    });
+  }).catch(() => { plansContainer.innerHTML = ''; plansContainer.appendChild(e('p', { style: { color: '#ef4444' } }, '\u{52A0}\u{8F7D}\u{5931}\u{8D25}')); });
+
+  const features = e('div', { className: 'card', style: { marginTop: '16px' } });
+  features.appendChild(e('p', { style: { fontWeight: 600, fontSize: '14px', marginBottom: '8px' } }, '\u{4F1A}\u{5458}\u{7279}\u{6743}'));
+  ['\u{2705} \u{89E3}\u{9501}\u{5168}\u{90E8}\u{771F}\u{5FC3}\u{8BDD}\u{9898}\u{5E93}',
+   '\u{1F525} \u{89E3}\u{9501}\u{5168}\u{90E8}\u{5927}\u{5192}\u{9669}\u{9898}\u{5E93}',
+   '\u{1F48E} \u{4E13}\u{5C5E}\u{9AD8}\u{96BE}\u{5EA6}\u{6311}\u{6218}',
+   '\u{1F381} \u{5B9A}\u{671F}\u{66F4}\u{65B0}\u{4E13}\u{5C5E}\u{9898}\u{76EE}'].forEach(t => {
+    features.appendChild(e('div', { style: { fontSize: '13px', color: '#6b7280', lineHeight: '1.8' } }, t));
+  });
+  container.appendChild(features);
+}
+
+function renderPunish(container) {
+  container.innerHTML = "";
+  var selLevel = 'all';
+  var selCategory = 'all';
+  var categories = [];
+
+  req('/punishment/categories').then(function(d) { categories = d; renderFilters(); }).catch(function(){});
+
+  function renderFilters() {
+    var filterRow = container.querySelector('.filter-row');
+    if (filterRow) filterRow.remove();
+    filterRow = e('div', { className: 'filter-row', style: { display: 'flex', gap: '8px', marginBottom: '16px', justifyContent: 'center' } });
+    var lvlSel = e('select', { style: { padding: '8px 12px', borderRadius: '10px', border: '1px solid #e5e7eb', background: '#fff', fontSize: '13px', color: '#374151', cursor: 'pointer', outline: 'none' } },
+      e('option', { value: 'all' }, '难度'),
+      e('option', { value: '1' }, '难度 1'),
+      e('option', { value: '2' }, '难度 2'),
+      e('option', { value: '3' }, '难度 3')
+    );
+    lvlSel.value = selLevel;
+    lvlSel.addEventListener('change', function() { selLevel = this.value; });
+    filterRow.appendChild(lvlSel);
+
+    var catSel = e('select', { style: { padding: '8px 12px', borderRadius: '10px', border: '1px solid #e5e7eb', background: '#fff', fontSize: '13px', color: '#374151', cursor: 'pointer', outline: 'none', flex: '1' } },
+      e('option', { value: 'all' }, '类别')
+    );
+    if (categories && categories.length) { categories.forEach(function(c) { catSel.appendChild(e('option', { value: c }, c)); }); }
+    catSel.value = selCategory;
+    catSel.addEventListener('change', function() { selCategory = this.value; });
+    filterRow.appendChild(catSel);
+    container.insertBefore(filterRow, container.querySelector('.filter-row') || container.firstChild);
+  }
+
+  var resultArea = e('div', { style: { display: 'flex', flexDirection: 'column', alignItems: 'center' } });
+  
+  function triggerDraw() {
+    var btn = resultArea.querySelector('.btn-p');
+    if (btn) btn.click();
+  }
+
+  var title = e('h1', { style: { fontSize: '18px', fontWeight: 'bold', color: '#1f2937', textAlign: 'center', marginBottom: '16px' } }, '⚡ 惩罚模式');
+  container.appendChild(title);
+
+  var drawBtn = e('button', { className: 'btn btn-p', style: { maxWidth: '240px' } }, '🎯 抽取惩罚');
+  drawBtn.addEventListener('click', async () => {
+    drawBtn.textContent = '抽取中...'; drawBtn.disabled = true;
+    resultArea.innerHTML = '';
+    var loading = e('div', { className: 'card', style: { width: '100%', textAlign: 'center', padding: '40px' } },
+      e('div', { style: { fontSize: '36px' } }, '⚡'),
+      e('p', { style: { color: '#9ca3af', marginTop: '8px' } }, '抽取中...'));
+    resultArea.appendChild(loading);
+    try {
+      var lv = selLevel !== 'all' ? selLevel : null;
+      var cat = selCategory !== 'all' ? selCategory : null;
+      var url = '/punishment/random' + (lv || cat ? '?level='+(lv||'')+'&category='+(cat||'') : '');
+      var resp = await req(url);
+      resultArea.innerHTML = '';
+      var card = e('div', { className: 'card card-reveal', style: { width: '100%', background: 'linear-gradient(135deg, #fef2f2, #fee2e2)', border: '2px solid #fca5a5', boxShadow: '0 4px 20px rgba(239,68,68,0.1)' } });
+      var badge = e('div', { style: { display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' } });
+      badge.appendChild(e('span', { style: { fontSize: '24px' } }, '⚡'));
+      badge.appendChild(e('span', { style: { fontSize: '12px', fontWeight: 700, background: '#fecaca', color: '#dc2626', padding: '3px 10px', borderRadius: '10px' } }, '惩罚 · 难度 ' + (resp.level || 1)));
+      if (resp.category) badge.appendChild(e('span', { style: { fontSize: '11px', color: '#9ca3af' } }, resp.category));
+      card.appendChild(badge);
+      card.appendChild(e('p', { style: { fontSize: '18px', fontWeight: 700, lineHeight: '1.8', color: '#1f2937', padding: '8px 0' } }, resp.content));
+      resultArea.appendChild(card);
+      resultArea.appendChild(e('div', { style: { height: '16px' } }));
+      resultArea.appendChild(drawBtn);
+    } catch (err) {
+      resultArea.innerHTML = '';
+      resultArea.appendChild(e('p', { style: { color: '#ef4444' } }, err.message));
+      resultArea.appendChild(drawBtn);
+    }
+    drawBtn.textContent = '🔄 再抽一个'; drawBtn.disabled = false;
+  });
+
+  resultArea.appendChild(drawBtn);
+  container.appendChild(resultArea);
+}
+window.addEventListener('popstate', render);
+render();
+</script>
+</body>
+</html>
